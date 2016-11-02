@@ -1,11 +1,28 @@
+body {
+  background: wheat;
+  font-family: 'helvetica', sans-serif;
+}
+
 header {
   background-image: url('assets/sunburst.jpg');
   background-repeat: no-repeat;
-  background-size: 100%;
+  background-size: 100% 100%;
   background-position: center top;
+  border: 1px solid black;
+  position: relative;
 }
 
 header img {
   display: block;
   margin: 0 auto;
+}
+
+header h1 {
+  position: absolute;
+  bottom: 0px;
+  right: 20px;
+  margin: auto;
+  font-size: 3.5em;
+  font-family: 'Coiny', cursive;
+  color: white;
 }
