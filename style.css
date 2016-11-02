@@ -54,7 +54,7 @@ section p {
   text-align: left;
 }
 
-form {
+form, form p {
   text-align: center;
 }
 
