@@ -4,10 +4,11 @@ body {
 }
 
 header {
+  width: 95%;
+  margin: 0 auto;
   background-image: url('assets/sunburst.jpg');
   background-repeat: no-repeat;
   background-size: 100% 100%;
-  background-position: center top;
   border: 1px solid black;
   position: relative;
 }
@@ -21,8 +22,52 @@ header h1 {
   position: absolute;
   bottom: 0px;
   right: 20px;
-  margin: auto;
+  margin: 0;
   font-size: 3.5em;
   font-family: 'Coiny', cursive;
   color: white;
+}
+
+section {
+  width: 75%;
+  margin: 20px auto ;
+  text-align: center;
+  clear: right;
+}
+
+section img {
+  float: left;
+  margin: 10px 10px 10px 0;
+  max-width: 150px;
+  max-height: 150px;
+}
+
+section h2 {
+  background: rgb(200, 100, 0);
+  margin: 0;
+  padding: 10px;
+  color: white;
+  border-radius: 10px;
+}
+
+section p {
+  text-align: left;
+}
+
+form {
+  text-align: center;
+}
+
+footer {
+  text-align: center;
+}
+
+section.recommendations {
+  text-align: left;
+}
+
+#registered-trademark {
+  font-family: sans-serif;
+  font-size: 12pt;
+  vertical-align: super;
 }
