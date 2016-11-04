@@ -11,6 +11,8 @@ header {
   background-size: 100% 100%;
   border: 1px solid black;
   position: relative;
+  font-family: 'Coiny', cursive;
+  color: white;
 }
 
 header img {
@@ -20,12 +22,16 @@ header img {
 
 header h1 {
   position: absolute;
-  bottom: 0px;
+  bottom: 20px;
   right: 20px;
   margin: 0;
   font-size: 3.5em;
-  font-family: 'Coiny', cursive;
-  color: white;
+}
+
+header p {
+  position: absolute;
+  bottom: 0px;
+  right: 32px;
 }
 
 section {
