@@ -36,10 +36,19 @@ header p {
   right: 32px;
 }
 
+main {
+  width: 100%;
+}
+
+aside {
+  padding: 10px;
+  background-color: gray;
+  border-radius: 5px;
+}
+
 section {
-  width: 75%;
+  width: 95%;
   margin: 20px auto;
-  position: relative;
 }
 
 section img {
@@ -75,11 +84,7 @@ a:link {
 }
 
 a:hover {
-  text-decoration: underline;
-}
-
-a:visited {
-  color: gray;
+  color: white;
 }
 
 footer {
@@ -89,14 +94,63 @@ footer {
 section.recommendations {
   display: inline-block;
   text-align: left;
-  width: auto;
-  margin: 0;
-  position: absolute;
-  right: 5%;
+  width: 80%;
+  margin: auto;
 }
 
 #registered-trademark {
   font-family: sans-serif;
   font-size: 12pt;
   vertical-align: super;
+}
+
+@media screen and (max-width: 500px) {
+  
+  header img {
+    display: none;
+  }
+
+  header h1, header p {
+    position: static;
+    margin: 10px auto 0;
+    text-align: center;
+  }
+
+  header h1 {
+    line-height: .76em;
+  }
+
+  header p {
+    line-height: .89em;
+    margin-bottom: 5px;
+  }
+
+}
+
+@media screen and (min-width: 767px) {
+
+  body {
+    width: 80%;
+    margin: 0 auto;
+  }
+
+  main {
+    display: inline-block;
+    width: 72%;
+  }
+
+  aside {
+    width: 25%;
+    float: left;
+  }
+
+}
+
+@media screen and (min-width: 980px) {
+
+  body {
+    width: 75%;
+    margin: 0 auto;
+  }
+
 }
