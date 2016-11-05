@@ -139,7 +139,7 @@ section.recommendations {
 
 }
 
-@media screen and (min-width: 767px) {
+@media screen and (min-width: 920px) {
 
   body {
     width: 80%;
@@ -165,4 +165,11 @@ section.recommendations {
     margin: 0 auto;
   }
 
+}
+
+@media screen and (min-width: 2000px) {
+  body {
+    width: 50%;
+    margin: 0 auto;
+  }
 }
