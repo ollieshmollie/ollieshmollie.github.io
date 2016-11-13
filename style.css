@@ -42,8 +42,8 @@ main {
 }
 
 aside {
-  margin-top: 10px;
-  padding: 10px;
+  margin: 20px auto;
+  width: 95%;
   background-color: gray;
   border: 1px solid black;
   border-radius: 5px;
@@ -98,7 +98,7 @@ aside h2 {
 }
 
 footer {
-  text-align: center;
+  text-align: left;
 }
 
 section.recommendations {
@@ -141,11 +141,16 @@ section.recommendations {
 
 }
 
-@media screen and (min-width: 920px) {
+@media screen and (min-width: 960px) {
 
   body {
     width: 80%;
     margin: 0 auto;
+    background-color: #555;
+  }
+
+  div {
+    background-color: wheat;
   }
 
   main {
@@ -154,13 +159,14 @@ section.recommendations {
   }
 
   aside {
+    margin-left: 5px;
     width: 25%;
     float: left;
   }
 
 }
 
-@media screen and (min-width: 980px) {
+@media screen and (min-width: 1400px) {
 
   body {
     width: 75%;
