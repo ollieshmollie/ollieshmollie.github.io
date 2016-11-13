@@ -29,14 +29,14 @@ header h1 {
   right: 20px;
   margin: 0;
   font-size: 3.5em;
-  text-shadow: 2px 2px 2px black;
+  text-shadow: 1px 1px 1px black;
 }
 
 header p {
   position: absolute;
   bottom: 0px;
   right: 32px;
-  text-shadow: 2px 2px 2px black;
+  text-shadow: 1px 1px 1px black;
 }
 
 main {
