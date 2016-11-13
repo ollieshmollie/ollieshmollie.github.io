@@ -72,6 +72,7 @@ main section h2 {
   color: white;
   border-radius: 10px;
   text-align: center;
+  box-shadow: 1px 1px 1px black;
 }
 
 main section p {
