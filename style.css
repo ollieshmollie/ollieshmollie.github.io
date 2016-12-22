@@ -9,81 +9,33 @@ header {
   width: 100%;
   margin: 0 auto;
   color: white;
-  text-align: right;
+  text-align: left;
 }
 
-header h1 {
-  margin-bottom: 0;
+div#container {
+  margin: auto;
+}
+
+h1#header {
+  color: green;
+  font-weight: bold;
 }
 
 main {
+  float: left;
   width: 65%;
   margin: 0 auto;
 }
 
 aside {
-  display: inline-block;
+  float: left;
   text-align: left;
-  width: 30%;
+  width: 15%;
+  vertical-align: top;
+  background-color: #777;
+  padding: 10px;
 }
 
 a {
   color: white;
-}
-
-@media screen and (max-width: 500px) {
-  
-  header img {
-    display: none;
-  }
-
-  header h1, header p {
-    position: static;
-    margin: 10px auto 0;
-    text-align: center;
-  }
-
-  header h1 {
-    line-height: .76em;
-  }
-
-  header p {
-    line-height: .89em;
-    margin-bottom: 5px;
-  }
-
-}
-
-@media screen and (min-width: 960px) {
-
-  body {
-    width: 80%;
-    margin: 0 auto;
-  }
-
-  div {
-    
-  }
-
-  main {
-    display: inline-block;
-    width: 72%;
-  }
-
-}
-
-@media screen and (min-width: 1400px) {
-
-  body {
-    width: 75%;
-    margin: 0 auto;
-  }
-
-}
-
-@media screen and (min-width: 2000px) {
-  body {
-    width: 50%;
-    margin: 0 auto;
-  }
 }
