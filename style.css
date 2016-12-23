@@ -15,11 +15,6 @@ div#container {
   margin: auto;
 }
 
-div#tact-readme {
-  margin-top: 0;
-  color: white;
-}
-
 h1#title {
   color: orange;
   font-weight: bold;
@@ -42,4 +37,50 @@ aside {
 
 a {
    color: white;
+}
+
+/* TACT README */
+
+div#tact-readme, div#tact-readme h1 {
+  margin-top: 0px;
+  color: white;
+}
+
+/* SHNAKE */
+div#shnake-div {
+  width: 300px;
+  position: relative;
+  margin: 0 auto; 
+}
+
+canvas#snakeCanvas {
+  display: block;
+  background-color: white;
+  margin: auto;
+}
+
+#snakeLength, #highScore {
+  color: red;
+}
+
+#snakeLength {
+  position: absolute;
+  left: 0;
+}
+
+#resetButton {
+  color: white;
+  background-color: inherit;
+  display: block;
+  margin: auto;
+}
+
+#highScore, #gameOver {
+  position: absolute;
+  right: 0;
+}
+
+#gameOver {
+  display: none;
+  color: red;
 }
