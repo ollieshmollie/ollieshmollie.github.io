@@ -12,7 +12,7 @@ $('#tact').click(function(e) {
   e.preventDefault()
   $.get('ajax/tact/README.html', function(html) {
     console.log("Clicked tact")
-    $menu.slideToggle()
+    if ($menuIcon.css('display') != 'none') $menu.slideToggle()
     $main.html(html)
   })
 })
@@ -21,7 +21,7 @@ $('#shnake').click(function(e) {
   e.preventDefault()
   $.get('ajax/shnake/index.html', function(html) {
     console.log("Clicked shnake")
-    $menu.slideToggle()
+    if ($menuIcon.css('display') != 'none') $menu.slideToggle()
     $main.html(html)
     $.getScript('ajax/shnake/serpent.js', function() {
       $.getScript('ajax/shnake/game.js', function() {

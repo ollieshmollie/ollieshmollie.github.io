@@ -35,10 +35,11 @@ h1#title {
 
 p#bio {
   color: orange;
+  margin-top: 0px;
 }
 
 main {
-  margin: 0 10px;
+  margin: 20px 10px;
   position: relative;
 }
 
@@ -64,7 +65,12 @@ div#tact-readme {
   color: white;
 }
 
+div#tact-readme h1 {
+  margin-top: 0px;
+}
+
 /* SHNAKE */
+
 div#shnake-div {
   width: 300px;
   position: relative;
@@ -103,4 +109,40 @@ canvas#snakeCanvas {
   display: none;
   color: red;
   top: -1em;
+}
+
+/* MEDIA QUERIES */
+
+@media (min-width: 600px) and (max-width: 960px) {
+  
+  body {
+    width: 75%;
+    margin: auto;
+  }
+
+  main {
+    margin: 20px auto 20px;
+    display: inline-block;
+    width: 68%;
+    vertical-align: top;
+  }
+
+  i#menu-icon {
+    display: none;
+  }
+
+  #bio {
+    margin-left: 10px;
+  }
+
+  #tact-readme {
+    margin-left: 10px;
+  }
+
+  aside {
+    width: 25%;
+    position: static;
+    display: inline-block;
+    margin-top: 20px;
+  }
 }
