@@ -3,7 +3,6 @@ var fps = 10;
 
 var game = new Game(canvas, fps);
 highScore();
-game.play();
 
 document.addEventListener("keydown", function(e) {
   switch (e.keyCode) {

@@ -37,6 +37,7 @@ $('#shnake').click(function(e) {
         $.getScript('ajax/shnake/game.js', function() {
           $.getScript('ajax/shnake/play.js', function() {
             console.log("Running shnake scripts...")
+            game.play();
           })
         })
       })
