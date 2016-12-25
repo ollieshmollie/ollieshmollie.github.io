@@ -3,6 +3,7 @@ $.fn.extend({
     return this.each(function() {
       $(this).css({right: '0'})
       $(this).animate({right: '-100%'}, function() {
+        $(this).empty()
         $(this).removeAttr('style')
         $(this).css({left: '-100%'})
         $(this).html(html)
