@@ -24,6 +24,7 @@ main {
   float: left;
   width: 65%;
   margin: 0 10px;
+  position: relative;
 }
 
 aside {
@@ -33,6 +34,8 @@ aside {
   vertical-align: top;
   background-color: #777;
   padding: 10px;
+  position: relative;
+  z-index: 1000;
 }
 
 a {
@@ -41,9 +44,12 @@ a {
 
 /* TACT README */
 
-div#tact-readme, div#tact-readme h1 {
-  margin-top: 0px;
+div#tact-readme {
   color: white;
+}
+
+div#tact-readme h1 {
+  margin-top: 0px;
 }
 
 /* SHNAKE */
