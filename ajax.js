@@ -8,6 +8,15 @@ $menuIcon.click(function() {
 
 var $main = $('main')
 
+$('#bioLink').click(function(e) {
+  e.preventDefault()
+  $.get('ajax/bio.html', function(html) {
+    console.log("Clicked bio")
+    if ($menuIcon.css('display') != 'none') $menu.slideToggle()
+    $main.html(html)
+  })
+})
+
 $('#tact').click(function(e) {
   e.preventDefault()
   $.get('ajax/tact/README.html', function(html) {
