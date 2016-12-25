@@ -20,6 +20,10 @@ h1#title {
   font-weight: bold;
 }
 
+p#bio {
+  color: orange;
+}
+
 main {
   float: left;
   width: 65%;
