@@ -7,8 +7,19 @@ body {
 
 header {
   display: inline-block;
-  width: 85%;
+  width: 100%;
   margin: 0px;
+  text-align: center;
+  position: relative;
+  background-color: #777;
+}
+
+i#menu-icon {
+  color: white;
+  font-size: 2em;
+  position: absolute;
+  bottom: 0;
+  left: 0;
 }
 
 div#container {
@@ -16,8 +27,10 @@ div#container {
 }
 
 h1#title {
+  display: inline-block;
   color: orange;
   font-weight: bold;
+  margin-bottom: 0;
 }
 
 p#bio {
@@ -25,21 +38,20 @@ p#bio {
 }
 
 main {
-  float: left;
-  width: 65%;
   margin: 0 10px;
   position: relative;
 }
 
 aside {
-  float: left;
   text-align: left;
-  width: 15%;
-  vertical-align: top;
-  background-color: #777;
+  width: 150px;
+  background-color: #777; 
   padding: 10px;
-  position: relative;
-  z-index: 1000;
+  position: fixed;
+  top: 58px;
+  z-index: 100;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  display: none;
 }
 
 a {
@@ -52,15 +64,12 @@ div#tact-readme {
   color: white;
 }
 
-div#tact-readme h1 {
-  margin-top: 0px;
-}
-
 /* SHNAKE */
 div#shnake-div {
   width: 300px;
   position: relative;
-  margin: 0 auto; 
+  display: block;
+  margin: 30px auto; 
 }
 
 canvas#snakeCanvas {
@@ -93,4 +102,5 @@ canvas#snakeCanvas {
 #gameOver {
   display: none;
   color: red;
+  top: -1em;
 }
