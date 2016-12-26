@@ -146,3 +146,29 @@ canvas#snakeCanvas {
     margin-top: 20px;
   }
 }
+
+@media (min-width: 960px) {
+  body {
+    width: 50%;
+    margin: auto;
+  }
+
+  i#menu-icon {
+    display: none;
+  }
+
+  main {
+    display: inline-block;
+    width: 60%;
+    margin: 20px auto;
+    vertical-align: top;
+  }
+
+  aside {
+    width: 25%;
+    position: static;
+    display: inline-block;
+    margin-top: 20px;
+  }
+
+}
