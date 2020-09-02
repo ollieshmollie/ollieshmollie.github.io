@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Shnake</title>
+  <link rel="icon" href="snake_icon.ico" />
+  <link rel="stylesheet" href="shnake.css">
+</head>
+<body>
+  <main>
+    <a href="http://www.github.com/ollieshmollie/shnake">Source</a>
+    <span id="gameOver">Game Over</span>
+    <canvas id="snakeCanvas" width="300" height="300">
+      Your browser does not support HTML canvas.
+    </canvas>
+    <span id="snakeLength">Snake Length: 1</span>
+    <span id="highScore">High Score: 0</span>
+    <br><br>
+    <button type="button" id="resetButton">Reset</button>
+  </main>
+  <script src="nativeExtensions.js"></script>
+  <script src="serpent.js"></script>
+  <script src="game.js"></script>
+  <script src="play.js"></script>
+</body>
+</html>
