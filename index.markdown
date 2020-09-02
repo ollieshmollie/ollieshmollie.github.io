@@ -4,3 +4,6 @@
 
 layout: home
 ---
+
+![That's me.](photo.jpg)
+<a href="/~ajbond/shnake.html">Howdy!</a>

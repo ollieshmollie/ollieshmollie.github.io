@@ -3,7 +3,10 @@ layout: page
 title: Portfolio
 permalink: /portfolio/
 ---
+[TODO: links]
+
 Here are some finshed and in-progress personal projects I'm most proud of:
+
 - WaveCastr
 - Passman
 - Fig
