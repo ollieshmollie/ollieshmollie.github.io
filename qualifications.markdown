@@ -17,7 +17,7 @@ permalink: /qualifications/
 - _Experience with EE Software_:
     - Multisim, Verilog, Linux.
 - _Programming Languages_:
-    - C/C++, Java, Python, Golang Programming projects include:
+    - C/C++, Java, Python, Golang
 
 <ins>__RELEVANT WORK EXPERIENCE__:</ins>
 - _Austin Community College; Comuter Science TA/Tutor_ (9/17 – 5/18)

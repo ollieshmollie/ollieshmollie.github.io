@@ -23,6 +23,7 @@
 #shnake canvas {
   display: block;
   background-color: white;
+  border: 1px solid black;
   margin: auto;
 }
 
