@@ -5,13 +5,14 @@
 layout: home
 ---
 
+<link rel="stylesheet" href="shnake.css">
+
 <div class="my-container" style="display: flex; align-items: center; margin-bottom: 20px;">
     <img src="/~ajbond/wall_street_square.jpg" alt="That's me." width="200" style="border-radius: 50%; margin-right: 20px;"/>
     <div>
-        Hi. I'm seeking an entry-level electrical engineering position. I possess strong technology fundamentals, teamwork and communication skills, and an excellent academic record.
+        Hi. I'm seeking an entry-level electrical engineering position. I possess strong technology fundamentals, teamwork and communication skills, and an excellent academic record. <span id="shnake-span">And snake.</span>
     </div>
 </div>
-<link rel="stylesheet" href="shnake.css">
 <div id="shnake-wrapper">
     <div id="shnake">
         <span id="gameOver">Game Over</span>
@@ -31,6 +32,7 @@ layout: home
 <script>
 var $shnake = document.getElementById("shnake");
 var $wrapper = document.getElementById("shnake-wrapper");
+var $span = document.getElementById("shnake-span");
 var hasMouseOverHandler = true;
 
 $wrapper.addEventListener("mouseover", showShnake);
@@ -48,10 +50,12 @@ function toggleMouseOverEvent() {
 }
 
 function showShnake() {
-    document.getElementById("shnake").style.visibility = "visible";
+    $shnake.style.visibility = "visible";
+    $span.style.visibility = "visible";
 }
 
 function hideShnake() {
-    document.getElementById("shnake").style.visibility = "hidden";
+    $shnake.style.visibility = "hidden";
+    $span.style.visibility = "hidden";
 }
 </script>

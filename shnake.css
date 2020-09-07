@@ -12,6 +12,10 @@
     margin: auto;
 }
 
+#shnake-span {
+    visibility: hidden;
+}
+
 #shnake a {
   color: red;
 }
