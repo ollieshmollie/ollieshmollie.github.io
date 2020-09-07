@@ -79,7 +79,7 @@ class Game {
     ) {
       this.serpent.addSegment();
       this.treat = new Treat(this.ctx);
-      this.fps += 2;
+      this.fps += 1;
     }
   }
 
