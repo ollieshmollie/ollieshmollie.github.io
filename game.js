@@ -1,8 +1,8 @@
 class Game {
   constructor(canvas, fps) {
     this.canvas = canvas;
-    this.ctx = canvas.getContext('2d');
-    this.serpent = new Serpent(canvas.width/2, canvas.height/2, this.ctx);
+    this.ctx = canvas.getContext("2d");
+    this.serpent = new Serpent(canvas.width / 2, canvas.height / 2, this.ctx);
     this.fps = fps;
     this.treat = new Treat(this.ctx);
     this.addArrowControls();
@@ -19,7 +19,12 @@ class Game {
   }
 
   get outOfBounds() {
-    return this.serpent.head.x > canvas.width - this.serpent.head.width || this.serpent.head.x < 0 || this.serpent.head.y > canvas.height - this.serpent.head.height || this.serpent.head.y < 0;
+    return (
+      this.serpent.head.x > canvas.width - this.serpent.head.width ||
+      this.serpent.head.x < 0 ||
+      this.serpent.head.y > canvas.height - this.serpent.head.height ||
+      this.serpent.head.y < 0
+    );
   }
 
   get direction() {
@@ -34,7 +39,11 @@ class Game {
     if (game.over) {
       gameOver.style.display = "none";
       this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-      this.serpent = new Serpent(this.canvas.width/2, this.canvas.height/2, this.ctx);
+      this.serpent = new Serpent(
+        this.canvas.width / 2,
+        this.canvas.height / 2,
+        this.ctx
+      );
       this.play();
     }
   }
@@ -50,7 +59,7 @@ class Game {
         clearInterval(loop);
         gameOver.style.display = "initial";
       }
-    }, 1000/this.fps);
+    }, 1000 / this.fps);
     this.offerTreat();
   }
 
@@ -59,27 +68,32 @@ class Game {
   }
 
   checkTreat() {
-    if (this.serpent.head.x == this.treat.x && this.serpent.head.y == this.treat.y) {
+    if (
+      this.serpent.head.x == this.treat.x &&
+      this.serpent.head.y == this.treat.y
+    ) {
       this.serpent.addSegment();
       this.treat = new Treat(this.ctx);
+      this.fps *= 10;
     }
   }
 
   saveScore() {
-    var snakeLength = document.getElementById('snakeLength');
+    var snakeLength = document.getElementById("snakeLength");
     snakeLength.innerHTML = "Snake Length: " + this.score;
     this.highScore();
   }
 
   highScore() {
-    if (typeof(Storage) !== "undefined") {
+    if (typeof Storage !== "undefined") {
       if (localStorage.highScore) {
-        if (this.score > localStorage.highScore) 
+        if (this.score > localStorage.highScore)
           localStorage.highScore = game.score;
       } else {
         localStorage.highScore = game.score;
       }
-      document.getElementById("highScore").innerHTML = "High Score: " + localStorage.highScore;
+      document.getElementById("highScore").innerHTML =
+        "High Score: " + localStorage.highScore;
     } else {
       document.getElementById("highScore").innerHTML = "Sorry, no web storage.";
     }
@@ -88,7 +102,7 @@ class Game {
   addArrowControls() {
     document.addEventListener("keydown", function(e) {
       switch (e.keyCode) {
-        case 38: 
+        case 38:
           if (game.direction != "down") {
             game.direction = "up";
           }
@@ -98,7 +112,7 @@ class Game {
             game.direction = "down";
           }
           break;
-        case 37: 
+        case 37:
           if (game.direction != "right") {
             game.direction = "left";
           }
@@ -114,43 +128,55 @@ class Game {
 
   addTouchControls() {
     canvas.addEventListener("touchstart", function(e) {
-    e.preventDefault();
-    var bufferSize = 70;
-    var x = parseInt(getTouchXPos(canvas, e)/10, 10)*10
-    var y = parseInt(getTouchYPos(canvas, e)/10, 10)*10;
-    var head = game.serpent.head;
+      e.preventDefault();
+      var bufferSize = 70;
+      var x = parseInt(getTouchXPos(canvas, e) / 10, 10) * 10;
+      var y = parseInt(getTouchYPos(canvas, e) / 10, 10) * 10;
+      var head = game.serpent.head;
 
-    function getTouchXPos(canvas, e) {
-      var rect = canvas.getBoundingClientRect();
-      return e.touches["0"].clientX - rect.left;
-    }
+      function getTouchXPos(canvas, e) {
+        var rect = canvas.getBoundingClientRect();
+        return e.touches["0"].clientX - rect.left;
+      }
 
-    function getTouchYPos(canvas, e) {
-      var rect = canvas.getBoundingClientRect();
-      return e.touches["0"].clientY - rect.top;
-    }
+      function getTouchYPos(canvas, e) {
+        var rect = canvas.getBoundingClientRect();
+        return e.touches["0"].clientY - rect.top;
+      }
 
-    switch (game.direction) {
-      case "up":
-      case "down":
-        game.direction = (x <= head.x) ? "left" : "right"
-        break;
-      case "left":
-      case "right":
-        game.direction = (y <= head.y) ? "up" : "down"
-        break;
-      default:
-        if (x.between(head.x - bufferSize, head.x + bufferSize) && y <= head.y) { 
-          game.direction = "up" 
-        } else if (x.between(head.x - bufferSize, head.x + bufferSize) && y >= head.y) { 
-            game.direction = "down" 
-        } else if (y.between(head.y - bufferSize, head.y + bufferSize) && x <= head.x) { 
-            game.direction = "left" 
-        } else if (y.between(head.y - bufferSize, head.y + bufferSize) && x >= head.x) { 
-            game.direction = "right" 
-        } else { 
-          console.log("Clicked in unknown direction");
-        };
+      switch (game.direction) {
+        case "up":
+        case "down":
+          game.direction = x <= head.x ? "left" : "right";
+          break;
+        case "left":
+        case "right":
+          game.direction = y <= head.y ? "up" : "down";
+          break;
+        default:
+          if (
+            x.between(head.x - bufferSize, head.x + bufferSize) &&
+            y <= head.y
+          ) {
+            game.direction = "up";
+          } else if (
+            x.between(head.x - bufferSize, head.x + bufferSize) &&
+            y >= head.y
+          ) {
+            game.direction = "down";
+          } else if (
+            y.between(head.y - bufferSize, head.y + bufferSize) &&
+            x <= head.x
+          ) {
+            game.direction = "left";
+          } else if (
+            y.between(head.y - bufferSize, head.y + bufferSize) &&
+            x >= head.x
+          ) {
+            game.direction = "right";
+          } else {
+            console.log("Clicked in unknown direction");
+          }
       }
     });
   }
