@@ -1,19 +1,22 @@
-body {
+#shnake {
   background: #555;
   font-family: 'Helvetica', sans-serif;
-}
-
-main {
   width: 300px;
-  margin: 100px auto 0;
+  margin: 0 auto 0;
   position: relative;
+  visibility: hidden;
 }
 
-a {
+#shnake-wrapper {
+    width: 300px;
+    margin: auto;
+}
+
+#shnake a {
   color: red;
 }
 
-canvas {
+#shnake canvas {
   display: block;
   background-color: white;
   margin: auto;
