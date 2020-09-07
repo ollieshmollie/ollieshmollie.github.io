@@ -20,7 +20,7 @@ permalink: /qualifications/
     - C/C++, Java, Python, Golang
 
 <ins>__RELEVANT WORK EXPERIENCE__:</ins>
-- _Austin Community College; Comuter Science TA/Tutor_ (9/17 – 5/18)
+- _Austin Community College; Computer Science TA/Tutor_ (9/17 – 5/18)
   - Graded assignments and tutored a class of 80 students in Python, C++, Java, JavaScript, PHP, SQL, Excel, Access
 
 <ins>__HONORS & AWARDS__:</ins>
