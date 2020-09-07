@@ -14,7 +14,6 @@ layout: home
 <link rel="stylesheet" href="shnake.css">
 <div id="shnake-wrapper">
     <div id="shnake">
-        <a href="http://www.github.com/ollieshmollie/shnake">Source</a>
         <span id="gameOver">Game Over</span>
         <canvas id="snakeCanvas" width="300" height="300">
         Sorry, your browser does not support HTML canvas.

@@ -1,9 +1,11 @@
+const INITIAL_FPS = 10;
+
 class Game {
-  constructor(canvas, fps) {
+  constructor(canvas) {
     this.canvas = canvas;
     this.ctx = canvas.getContext("2d");
     this.serpent = new Serpent(canvas.width / 2, canvas.height / 2, this.ctx);
-    this.fps = fps;
+    this.fps = INITIAL_FPS;
     this.treat = new Treat(this.ctx);
     this.addArrowControls();
     this.addTouchControls();
@@ -36,7 +38,7 @@ class Game {
   }
 
   reset() {
-    if (game.over) {
+    if (this.over) {
       gameOver.style.display = "none";
       this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
       this.serpent = new Serpent(
@@ -44,22 +46,25 @@ class Game {
         this.canvas.height / 2,
         this.ctx
       );
+      this.fps = INITIAL_FPS;
       this.play();
     }
   }
 
   play() {
     var game = this;
-    var loop = setInterval(function() {
+    this.loop = setTimeout(function() {
       game.serpent.move();
       game.checkTreat();
       game.offerTreat();
       game.saveScore();
       if (game.over) {
-        clearInterval(loop);
         gameOver.style.display = "initial";
+      } else {
+        game.play();
       }
     }, 1000 / this.fps);
+
     this.offerTreat();
   }
 
@@ -74,7 +79,7 @@ class Game {
     ) {
       this.serpent.addSegment();
       this.treat = new Treat(this.ctx);
-      this.fps *= 10;
+      this.fps += 2;
     }
   }
 

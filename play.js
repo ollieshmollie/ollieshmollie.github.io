@@ -1,5 +1,3 @@
-var canvas = document.getElementById('snakeCanvas');
-var fps = 10;
-
-var game = new Game(canvas, fps);
+var canvas = document.getElementById("snakeCanvas");
+var game = new Game(canvas);
 game.play();
