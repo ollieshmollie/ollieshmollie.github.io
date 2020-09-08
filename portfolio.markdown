@@ -10,7 +10,7 @@ These are some projects I did that I like. Many of them are interpreters. I get 
   The token Scheme implementation. I'm proud of this one because it's in C99 and I implemented a tracing garbage collector for it. I love the name, too. I wrote a Go port of it called GoFig. Yessssssss.
 
 <a href="https://github.com/olishmollie/passman">Passman</a>.
-  I love command-line tools. I don't know why. I was trying to find a good terminal-based password manager, but the ones I found had steep learing curves and were slow. So I wrote my own, and I still use it. It's faster than <a href="https://www.passwordstore.org">Pass</a>, and has a better installation and setup experience.
+  I love command-line tools. I don't know why. I was trying to find a good terminal-based password manager, but the ones I found had steep learning curves and were slow. So I wrote my own, and I still use it. It's faster than <a href="https://www.passwordstore.org">Pass</a>, and has a better installation and setup experience.
 
 <a href="https://github.com/olishmollie/lc3-as">Lc3-as</a>.
   I found a great <a href="https://justinmeiners.github.io/lc3-vm/">tutorial</a> on writing your own VM that modeled the <a href="https://en.wikipedia.org/wiki/Little_Computer_3">LC-3</a>. I followed it eagerly, and after it was done I decided to build an assembler for it. I learned a lot, especially about trap routines, assembly language, and, well, assemblers. Still working on the linker and C compiler.
