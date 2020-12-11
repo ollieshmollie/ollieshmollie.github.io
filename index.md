@@ -8,7 +8,7 @@ layout: home
 <link rel="stylesheet" href="shnake.css">
 
 <div class="my-container" style="display: flex; align-items: center; margin-bottom: 20px;">
-    <img src="/~ajbond/wall_street_square.jpg" alt="That's me." width="200" style="border-radius: 50%; margin-right: 20px;"/>
+    <img src="/wall_street_square.jpg" alt="That's me." width="200" style="border-radius: 50%; margin-right: 20px;"/>
     <div>
         Hi. I'm seeking an entry-level electrical engineering position. I possess strong technology fundamentals, teamwork and communication skills, and an excellent academic record. <span id="shnake-span">And snake.</span>
     </div>

@@ -1,7 +1,7 @@
 ---
 layout: page
-title: Qualifications
-permalink: /qualifications/
+title: Resume
+permalink: /resume/
 ---
 <ins>__EDUCATION__:</ins>
 - _Texas A&M University; College Station, TX_ (9/18 – expected 12/21)
