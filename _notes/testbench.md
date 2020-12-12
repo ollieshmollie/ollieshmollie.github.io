@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Writing a Test Bench in Verilog
+title: Writing a Verilog Test Bench
 usemathjax: true
 ---
 
