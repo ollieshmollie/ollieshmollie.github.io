@@ -9,7 +9,7 @@ usemathjax: true
 Sometimes dealing with sinusoidal signals in the time domain can be a hassle. Consider finding the steady-state current of the circuit below, with $$v(t)=V_0\cos(\omega{}t+\phi)$$.
 
 <p align="center">
-    <img src="/rlc_circuit.png" alt="RLC Circuit" style="margin: 0 auto"/>
+    <img src="/rlc_circuit.png" alt="RLC Circuit"/>
 </p>
 
 From circuit theory, we know that the capacitor current is proportional to the derivative of the voltage, while the current across the inductor is the integral of the voltage. Therefore, using Kirchoff's voltage law,

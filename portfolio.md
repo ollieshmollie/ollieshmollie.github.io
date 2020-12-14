@@ -4,7 +4,7 @@ title: Portfolio
 permalink: /portfolio/
 ---
 
-These are some projects I'm working on.
+These are some projects I'm working on. See more on [Github](https://github.com/olishmollie).
 
 <a href="https://github.com/olishmollie/fig">Fig</a>.
   The token Scheme implementation. I'm proud of this one because it's in C99 and I implemented a tracing garbage collector for it. I love the name, too. I wrote a Go port of it called GoFig. Yessssssss.

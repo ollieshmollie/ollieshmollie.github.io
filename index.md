@@ -7,10 +7,24 @@ layout: home
 
 <link rel="stylesheet" href="shnake.css">
 
-<div class="my-container" style="display: flex; align-items: center; margin-bottom: 20px;">
-    <img src="/wall_street_square.jpg" alt="That's me." width="200" style="border-radius: 50%; margin-right: 20px;"/>
+<div class="my-container" style="display: flex; align-items: flex-start; margin-bottom: 20px;">
+    <img src="/headshot2.png" alt="That's me." width="200" style="border-radius: 50%; margin-right: 20px;"/>
     <div>
-        Hi. I'm seeking an entry-level electrical engineering position. I possess strong technology fundamentals, teamwork and communication skills, and an excellent academic record. <span id="shnake-span">And snake.</span>
+        <p>
+        Hi. I'm seeking an entry-level electrical engineering position.
+        </p>
+
+        <p>
+        I possess strong technology fundamentals, teamwork and communication skills, and an excellent academic record. I've taken classes on digital design, computer architecture, analog circuits, applied electromagnetics, electrical energy conversion, and statistics.
+        </p>
+
+        <p>
+        Outside of school, I do a lot of toy projects in programming languages including C, C++, Rust, and Go (see my <a href="/~ajbond/portfolio.html">portfolio</a>). You can find my Github at the bottom of the page.
+        </p>
+
+        <p>
+        In short, I have the talent, perspective, and people skills to make your organization better. Feel free to drop me a line, and thanks for reading. <span id="shnake-span">Here's a game of snake I made.</span>
+        </p>
     </div>
 </div>
 <div id="shnake-wrapper">
