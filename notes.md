@@ -4,7 +4,7 @@ title: Notes
 permalink: /notes/
 ---
 
-Here are some notes on interesting topics I'm learning in school.
+Here are some notes on interesting topics I'm studying in school.
 
 <div class="home">
   {%- if site.notes.size > 0 -%}
