@@ -1,7 +1,6 @@
 ---
-layout: post
+layout: page
 title: Writing a Verilog Test Bench
-usemathjax: true
 ---
 
 Let's write a test bench for an ALU. This ALU will have two 64 bit inputs, A and B, a 64 bit output W, a 1 bit output Zero (asserted when the output is zero), and a 4 bit control signal Ctrl with the following truth table:

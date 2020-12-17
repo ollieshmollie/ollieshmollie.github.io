@@ -7,8 +7,7 @@ layout: home
 
 <link rel="stylesheet" href="shnake.css">
 
-<div class="my-container" style="display: flex; align-items: flex-start; margin-bottom: 20px;">
-    <img src="/headshot2.png" alt="That's me." width="200" style="border-radius: 50%; margin-right: 20px;"/>
+<div class="my-container">
     <div>
         <p>
         Hi. I'm seeking an entry-level electrical engineering position.
@@ -23,12 +22,15 @@ layout: home
         </p>
 
         <p>
-        In short, I have the talent, perspective, and people skills to make your organization better. Feel free to drop me a line, and thanks for reading. <span id="shnake-span">Here's a game of snake I made.</span>
+        In short, I have the talent, perspective, and people skills to make your organization better. Feel free to drop me a line, and thanks for reading. <span id="shnake-span"></span>
         </p>
     </div>
 </div>
 <div id="shnake-wrapper">
-    <div id="shnake">
+    <div align="center" id="headshot" style="position: absolute;">
+        <img src="/headshot2.png" alt="That's me." width="300" style="border-radius: 50%; margin-right: 20px;"/>
+    </div>
+    <div id="shnake" style="position: absolute;">
         <span id="gameOver">Game Over</span>
         <canvas id="snakeCanvas" width="300" height="300">
         Sorry, your browser does not support HTML canvas.
@@ -46,7 +48,7 @@ layout: home
 <script>
 var $shnake = document.getElementById("shnake");
 var $wrapper = document.getElementById("shnake-wrapper");
-var $span = document.getElementById("shnake-span");
+var $image = document.getElementById("headshot");
 var hasMouseOverHandler = true;
 
 $wrapper.addEventListener("mouseover", showShnake);
@@ -65,11 +67,11 @@ function toggleMouseOverEvent() {
 
 function showShnake() {
     $shnake.style.visibility = "visible";
-    $span.style.visibility = "visible";
+    $image.style.visibility = "hidden";
 }
 
 function hideShnake() {
     $shnake.style.visibility = "hidden";
-    $span.style.visibility = "hidden";
+    $image.style.visibility = "visible";
 }
 </script>

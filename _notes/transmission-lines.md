@@ -1,9 +1,9 @@
 ---
 layout: page
-title: Deriving Wave Propagation On a Transmission Line
+title: Wave Propagation On a Transmission Line
 usemathjax: true
 ---
-If a electrical line is long enough ($$\frac{l}{\lambda}\gtrapprox{}0.01$$), the effects of the length must be taken into account. We call such lines _transmission lines_{: style="color: red;"}, and they consist of two conductors separated by a dielectric material (for example, a coaxial cable).
+If an electrical line is long enough ($$\frac{l}{\lambda}\gtrapprox{}0.01$$), the effects of the length must be taken into account. We call such lines _TEM transmission lines_{: style="color: red;"}, and they consist of two conductors separated by a dielectric material (for example, a coaxial cable).
 
 # The Telegrapher's Equations
 
