@@ -22,14 +22,12 @@ layout: home
         </p>
 
         <p>
-        In short, I have the talent, perspective, and people skills to make your organization better. Feel free to drop me a line, and thanks for reading. <span id="shnake-span"></span>
+        I have the talent, perspective, and people skills to make your organization better. Feel free to drop me a line, and thanks for reading. <span id="shnake-span"></span>
         </p>
     </div>
 </div>
 <div id="shnake-wrapper">
-    <div align="center" id="headshot" style="position: absolute;">
-        <img src="/headshot2.png" alt="That's me." width="300" style="border-radius: 50%; margin-right: 20px;"/>
-    </div>
+    <img src="headshot2.png" alt="That's me." id="image" width="300" style="border-radius: 50%; position:absolute"/>
     <div id="shnake" style="position: absolute;">
         <span id="gameOver">Game Over</span>
         <canvas id="snakeCanvas" width="300" height="300">
@@ -48,26 +46,32 @@ layout: home
 <script>
 var $shnake = document.getElementById("shnake");
 var $wrapper = document.getElementById("shnake-wrapper");
-var $image = document.getElementById("headshot");
-var hasMouseOverHandler = true;
+var $image = document.getElementById("image");
+var hasMouseEnterHandler = true;
 
-$wrapper.addEventListener("mouseover", showShnake);
-$wrapper.addEventListener("mouseout", hideShnake);
-$wrapper.addEventListener("click", toggleMouseOverEvent);
+var images = ["headshot2.png", "blinky.png", "sr_latch.png"];
+var image_idx = 0;
 
-function toggleMouseOverEvent() {
-    if (hasMouseOverHandler) {
-        $wrapper.removeEventListener("mouseout", hideShnake);
-        hasMouseOverHandler = false;
-    } else {
-        $wrapper.addEventListener("mouseout", hideShnake);
-        hasMouseOverHandler = true;
-    }
-}
+$wrapper.addEventListener("mouseenter", showShnake);
+$wrapper.addEventListener("mouseleave", hideShnake);
+
+// $wrapper.addEventListener("click", toggleMouseEnterEvent);
+//
+// function toggleMouseEnterEvent() {
+//     if (hasMouseEnterHandler) {
+//         $wrapper.removeEventListener("mouseleave", hideShnake);
+//         hasMouseEnterHandler = false;
+//     } else {
+//         $wrapper.addEventListener("mouseleave", hideShnake);
+//         hasMouseEnterHandler = true;
+//     }
+// }
 
 function showShnake() {
     $shnake.style.visibility = "visible";
     $image.style.visibility = "hidden";
+    image_idx = (image_idx + 1) % images.length;
+    $image.src = images[image_idx];
 }
 
 function hideShnake() {
