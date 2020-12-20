@@ -18,7 +18,7 @@ layout: home
         </p>
 
         <p>
-        Outside of school, I do a lot of toy projects in programming languages including C, C++, Rust, and Go (see my <a href="/~ajbond/portfolio.html">portfolio</a>). You can find my Github at the bottom of the page.
+        Outside of school, I do a lot of toy projects in programming languages including C, C++, Rust, and Go (see my <a href="/~ajbond/portfolio.html">portfolio</a> for these and other projects). You can find my Github at the bottom of the page.
         </p>
 
         <p>
@@ -35,8 +35,6 @@ layout: home
         </canvas>
         <span id="snakeLength">Snake Length: 1</span>
         <span id="highScore">High Score: 0</span>
-        <br><br>
-        <button type="button" id="resetButton">Reset</button>
     </div>
 </div>
 <script src="nativeExtensions.js"></script>
@@ -49,7 +47,12 @@ var $wrapper = document.getElementById("shnake-wrapper");
 var $image = document.getElementById("image");
 var hasMouseEnterHandler = true;
 
-var images = ["headshot2.png", "blinky.png", "sr_latch.png"];
+var images = [
+    {src: "headshot2.png", alt: "That's me."},
+    {src: "inhibit_pcb.png", alt: "An inhibit scheme I designed for AggieSat6."},
+    {src: "sr_latch.png", alt: "Verilog I wrote for a digital design class."},
+    {src: "blinky.png", alt: "An arduino project I've been working on."}
+];
 var image_idx = 0;
 
 $wrapper.addEventListener("mouseenter", showShnake);
@@ -71,11 +74,13 @@ function showShnake() {
     $shnake.style.visibility = "visible";
     $image.style.visibility = "hidden";
     image_idx = (image_idx + 1) % images.length;
-    $image.src = images[image_idx];
+    $image.src = images[image_idx].src;
+    $image.alt = images[image_idx].alt;
 }
 
 function hideShnake() {
     $shnake.style.visibility = "hidden";
     $image.style.visibility = "visible";
+    game.reset();
 }
 </script>
