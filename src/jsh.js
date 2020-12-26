@@ -221,7 +221,7 @@ function help() {
     let commandStr = "[" + validCommands.join(", ") + "]";
     var helpStr = `Commands: [${validCommands.join(", ")}]\n\n`
 
-    helpStr += `cat - Output a file to the the terminal.
+    helpStr += `cat - Output a file to the terminal.
 cd - Change directories.
 clear - Clear the terminal screen.
 exit - View the rest of the site.
