@@ -1,0 +1,58 @@
+* {
+    box-sizing: border-box;
+}
+
+#jshContainer {
+    width: 100vw;
+    height: 100vh;
+    background: #000000;
+    color: lightgreen;
+    border: 5px solid gray;
+}
+
+#jshTextArea {
+    width: 100%;
+    height: 100%;
+    outline: none;
+    resize: none;
+    margin: 0;
+    background: inherit;
+    color: inherit;
+    font-size: 20px;
+    font-family: 'Source Code Pro', monospace;
+    border: none;
+}
+
+#snakeCanvas {
+    display: none;
+    background: inherit;
+    color: inherit;
+    border: 1px solid gray;
+}
+
+.item {
+}
+
+.item img {
+}
+
+.img-round {
+    border-radius: 50%;
+    margin-right: 50px;
+}
+
+.img-large {
+    width: 150px;
+}
+
+.img-medium {
+    width: 125px;
+}
+
+.img-small {
+    width: 100px;
+}
+
+.img-xsmall {
+    width: 75px;
+}

@@ -14,14 +14,10 @@ permalink: /resume/
 
 
 <ins>__SKILLS__:</ins>
-- _Experience with EE Software_:
-    - Multisim, Verilog, Linux.
+- _EE Classes Taken_:
+    - Computer Architecture, Digital Design, Electromagnetics, Circuits I & II, Systems Programming, Data Structures & Algorithms, Signals & Systems, Statistics
 - _Programming Languages_:
-    - C/C++, Java, Python, Golang
-
-<ins>__RELEVANT WORK EXPERIENCE__:</ins>
-- _Austin Community College; Computer Science TA/Tutor_ (9/17 – 5/18)
-  - Graded assignments and tutored a class of 80 students in Python, C++, Java, JavaScript, PHP, SQL, Excel, Access
+    - C/C++, Python, Golang, Java et al.
 
 <ins>__HONORS & AWARDS__:</ins>
 - Texas A&M Engineering Honors program; Austin Community College Honors Program
@@ -29,6 +25,8 @@ permalink: /resume/
 
 
 <ins>__OTHER ACTIVITIES__:</ins>
+- _AggieSat 6_
+  - Designed PCB inhibit scheme for launch safety, working on battery charge circuitry and power delivery
 - _12th Astronaut Lab_
   - Developing a VR experience for NASA astronauts to use on EV missions.
 

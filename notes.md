@@ -3,9 +3,6 @@ layout: page
 title: Notes
 permalink: /notes/
 ---
-
-Here are some notes on interesting topics I'm studying in school.
-
 <div class="home">
   {%- if site.notes.size > 0 -%}
     <ul class="collection-list">
