@@ -1,16 +1,16 @@
-Number.prototype.times = function(f) {
+Number.prototype.times = function (f) {
     for (var i = 0; i < this; i++) {
         f();
     }
     return this;
-}
+};
 
-Number.prototype.between = function(a, b) {
+Number.prototype.between = function (a, b) {
     var min = Math.min(a, b);
     var max = Math.max(a, b);
 
     return this > min && this < max;
-}
+};
 
 class Segment {
     constructor(x, y, ctx, color = "lightgreen") {
@@ -65,40 +65,55 @@ class Head extends Segment {
             head.ctx.clearRect(x + 6, y + 6, 2, 2);
         }
         switch (this.currAxis) {
-        case "+x":
-            drawRightEye();
-            break;
-        case "-x":
-            drawLeftEye();
-            break;
-        case "+y":
-            drawBottomEyes();
-            break;
-        default:
-            drawRightEye();
-            drawLeftEye();
+            case "+x":
+                drawRightEye();
+                break;
+            case "-x":
+                drawLeftEye();
+                break;
+            case "+y":
+                drawBottomEyes();
+                break;
+            default:
+                drawRightEye();
+                drawLeftEye();
         }
-        
     }
 
     move() {
         switch (this.direction) {
-        case "up":
-            this.moveTo(this.x, this.y - this.height);
-            this.currAxis = "-y";
-            break;
-        case "down":
-            this.moveTo(this.x, this.y + this.height);
-            this.currAxis = "+y";
-            break;
-        case "left":
-            this.moveTo(this.x - this.width, this.y);
-            this.currAxis = "-x";
-            break;
-        case "right":
-            this.moveTo(this.x + this.width, this.y);
-            this.currAxis = "+x";
-            break;
+            case "up":
+                this.moveTo(
+                    this.x % snakeCanvas.width,
+                    this.y - this.height < 0
+                        ? snakeCanvas.height
+                        : this.y - this.height
+                );
+                this.currAxis = "-y";
+                break;
+            case "down":
+                this.moveTo(
+                    this.x % snakeCanvas.width,
+                    (this.y + this.height) % snakeCanvas.height
+                );
+                this.currAxis = "+y";
+                break;
+            case "left":
+                this.moveTo(
+                    this.x - this.width < 0
+                        ? snakeCanvas.width
+                        : this.x - this.width,
+                    this.y % snakeCanvas.height
+                );
+                this.currAxis = "-x";
+                break;
+            case "right":
+                this.moveTo(
+                    (this.x + this.width) % snakeCanvas.width,
+                    this.y % snakeCanvas.height
+                );
+                this.currAxis = "+x";
+                break;
         }
     }
 }
@@ -117,8 +132,8 @@ class Treat extends Segment {
     }
 
     randomPos(max) {
-        var num = Math.floor((Math.random() * max));
-        return parseInt(num/10, 10)*10;
+        var num = Math.floor(Math.random() * max);
+        return parseInt(num / 10, 10) * 10;
     }
 }
 
@@ -133,18 +148,41 @@ class Serpent {
         for (var i = 1; i < this.segments.length; i++) {
             this.segments[i].targetX = this.segments[i - 1].x;
             this.segments[i].targetY = this.segments[i - 1].y;
-            if (this.segments[i].x == this.segments[i].targetX && this.segments[i].targetY > this.segments[i].y) this.segments[i].currAxis = "+y";
-            if (this.segments[i].y == this.segments[i].targetY && this.segments[i].targetX > this.segments[i].x) this.segments[i].currAxis = "+x";
-            if (this.segments[i].x == this.segments[i].targetX && this.segments[i].targetY < this.segments[i].y) this.segments[i].currAxis = "-y";
-            if (this.segments[i].y == this.segments[i].targetY && this.segments[i].targetX < this.segments[i].x) this.segments[i].currAxis = "-x";
+
+            if (
+                this.segments[i].x == this.segments[i].targetX &&
+                this.segments[i].targetY > this.segments[i].y
+            ) {
+                this.segments[i].currAxis = "+y";
+            }
+
+            if (
+                this.segments[i].y == this.segments[i].targetY &&
+                this.segments[i].targetX > this.segments[i].x
+            ) {
+                this.segments[i].currAxis = "+x";
+            }
+
+            if (
+                this.segments[i].x == this.segments[i].targetX &&
+                this.segments[i].targetY < this.segments[i].y
+            ) {
+                this.segments[i].currAxis = "-y";
+            }
+
+            if (
+                this.segments[i].y == this.segments[i].targetY &&
+                this.segments[i].targetX < this.segments[i].x
+            ) {
+                this.segments[i].currAxis = "-x";
+            }
         }
-        
+
         this.head.move();
-        
+
         for (i = 1; i < this.segments.length; i++) {
             this.segments[i].chase();
         }
-
     }
 
     get length() {
@@ -166,21 +204,21 @@ class Serpent {
     addSegment() {
         var seg = new Segment(null, null, this.ctx);
         switch (this.tail.currAxis) {
-        case "+y":
-            seg.x = this.tail.x;
-            seg.y = this.tail.y - seg.height;
-            break;
-        case "+x":
-            seg.x = this.tail.x - seg.width;
-            seg.y = this.tail.y;
-            break;
-        case "-y":
-            seg.x = this.tail.x;
-            seg.y = this.tail.y + seg.height;
-            break;
-        case "-x":
-            seg.x = this.tail.x + seg.width;
-            seg.y = this.tail.y;
+            case "+y":
+                seg.x = this.tail.x;
+                seg.y = this.tail.y - seg.height;
+                break;
+            case "+x":
+                seg.x = this.tail.x - seg.width;
+                seg.y = this.tail.y;
+                break;
+            case "-y":
+                seg.x = this.tail.x;
+                seg.y = this.tail.y + seg.height;
+                break;
+            case "-x":
+                seg.x = this.tail.x + seg.width;
+                seg.y = this.tail.y;
         }
         this.segments.push(seg);
         seg.draw(seg.x, seg.y);
@@ -193,7 +231,11 @@ class Game {
     constructor(canvas) {
         this.canvas = canvas;
         this.ctx = canvas.getContext("2d");
-        this.serpent = new Serpent(canvas.width / 2, canvas.height / 2, this.ctx);
+        this.serpent = new Serpent(
+            canvas.width / 2,
+            canvas.height / 2,
+            this.ctx
+        );
         this.fps = INITIAL_FPS;
         this.treat = new Treat(this.ctx);
         this._over = false;
@@ -204,7 +246,7 @@ class Game {
     }
 
     get over() {
-        return this._over || this.outOfBounds || this.serpent.touchingSelf;
+        return this._over || this.serpent.touchingSelf; // || this.outOfBounds
     }
 
     set over(newOver) {
@@ -214,9 +256,10 @@ class Game {
     get outOfBounds() {
         return (
             this.serpent.head.x > this.canvas.width - this.serpent.head.width ||
-                this.serpent.head.x < 0 ||
-                this.serpent.head.y > this.canvas.height - this.serpent.head.height ||
-                this.serpent.head.y < 0
+            this.serpent.head.x < 0 ||
+            this.serpent.head.y >
+                this.canvas.height - this.serpent.head.height ||
+            this.serpent.head.y < 0
         );
     }
 
@@ -243,7 +286,7 @@ class Game {
         document.addEventListener("keydown", this.handleKeyPress);
         this.over = false;
         var game = this;
-        this.loop = setTimeout(function() {
+        this.loop = setTimeout(function () {
             game.serpent.move();
             game.checkTreat();
             game.offerTreat();
@@ -267,11 +310,11 @@ class Game {
     checkTreat() {
         if (
             this.serpent.head.x == this.treat.x &&
-                this.serpent.head.y == this.treat.y
+            this.serpent.head.y == this.treat.y
         ) {
             this.serpent.addSegment();
             this.treat = new Treat(this.ctx);
-            this.fps += 1;
+            this.fps += 0.7;
         }
     }
 
@@ -281,29 +324,29 @@ class Game {
 
     handleKeyPress(e) {
         switch (e.keyCode) {
-        case 38:
-            if (game.direction != "down") {
-                game.direction = "up";
-            }
-            break;
-        case 40:
-            if (game.direction != "up") {
-                game.direction = "down";
-            }
-            break;
-        case 37:
-            if (game.direction != "right") {
-                game.direction = "left";
-            }
-            break;
-        case 39:
-            if (game.direction != "left") {
-                game.direction = "right";
-            }
-            break;
-        case 81:
-            e.preventDefault();
-            game.quit();
+            case 38:
+                if (game.direction != "down") {
+                    game.direction = "up";
+                }
+                break;
+            case 40:
+                if (game.direction != "up") {
+                    game.direction = "down";
+                }
+                break;
+            case 37:
+                if (game.direction != "right") {
+                    game.direction = "left";
+                }
+                break;
+            case 39:
+                if (game.direction != "left") {
+                    game.direction = "right";
+                }
+                break;
+            case 81:
+                e.preventDefault();
+                game.quit();
         }
     }
 }

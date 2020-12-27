@@ -6,24 +6,24 @@ var inputBuffer = "";
 var cursorPos = beginningOfLine();
 
 // Disable focusing away from textarea
-document.addEventListener("click", function(e) {
+document.addEventListener("click", function (e) {
     jshTextArea.focus();
 });
 
 // Always restore cursor position even if you click
-jshTextArea.addEventListener("click", function(e) {
+jshTextArea.addEventListener("click", function (e) {
     e.preventDefault();
     e.stopPropagation();
     this.selectionStart = this.selectionEnd = cursorPos;
 });
 
 // Insert text into buffer
-jshTextArea.addEventListener("input", function(e) {
+jshTextArea.addEventListener("input", function (e) {
     inputBuffer = this.value.substr(beginningOfLine());
 });
 
 function handleKeydown(e) {
-    // Handle newline 
+    // Handle newline
     if (e.keyCode === 13) {
         e.preventDefault();
         cursorPos = beginningOfLine();
@@ -71,14 +71,14 @@ function handleKeydown(e) {
     // Handle arrow keys
     else if (e.keyCode >= 37 && e.keyCode <= 40) {
         switch (e.keyCode) {
-        case 37:
-            if (atBeginningOfLine()) {
+            case 37:
+                if (atBeginningOfLine()) {
+                    e.preventDefault();
+                }
+                break;
+            case 38:
+            case 40:
                 e.preventDefault();
-            }
-            break;
-        case 38:
-        case 40:
-            e.preventDefault();
         }
     }
     // All other keys
@@ -92,7 +92,7 @@ function prompt() {
 }
 
 function currentLine() {
-    return (jshTextArea.value.match(/\n/g)||[]).length;
+    return (jshTextArea.value.match(/\n/g) || []).length;
 }
 
 function beginningOfLine() {
@@ -104,8 +104,10 @@ function beginningOfLine() {
 }
 
 function atBeginningOfLine() {
-    return jshTextArea.selectionStart <= 2 ||
-        jshTextArea.selectionStart <= beginningOfLine();
+    return (
+        jshTextArea.selectionStart <= 2 ||
+        jshTextArea.selectionStart <= beginningOfLine()
+    );
 }
 
 function output(str) {
@@ -119,7 +121,16 @@ function output(str) {
     cursorPos = jshTextArea.selectionStart;
 }
 
-var validCommands = ["cat", "cd", "clear", "exit", "help", "ls", "open", "snake"];
+var validCommands = [
+    "cat",
+    "cd",
+    "clear",
+    "exit",
+    "help",
+    "ls",
+    "open",
+    "snake",
+];
 
 function exec(input) {
     if (input.length === 0) {
@@ -139,7 +150,7 @@ function exec(input) {
             } else if (command === "cd") {
                 cd(tokens.slice(1));
             } else if (command === "exit") {
-                window.location.href = "/about"
+                window.location.href = "/about";
             } else if (command === "help") {
                 help();
             } else if (command === "ls") {
@@ -153,7 +164,7 @@ function exec(input) {
         } else {
             output("command not found: " + command);
         }
-    } 
+    }
 }
 
 function findFile(filename, dir = fs) {
@@ -167,7 +178,7 @@ function findFile(filename, dir = fs) {
     for (let i = 0; i < dir.length; ++i) {
         if (dir[i].name === filename) {
             return dir[i];
-        } 
+        }
 
         if ((obj = findFile(path.slice(1).join("/"), dir[i].files))) {
             return obj;
@@ -219,7 +230,7 @@ function clear() {
 
 function help() {
     let commandStr = "[" + validCommands.join(", ") + "]";
-    var helpStr = `Commands: [${validCommands.join(", ")}]\n\n`
+    var helpStr = `Commands: [${validCommands.join(", ")}]\n\n`;
 
     helpStr += `cat - Output a file to the terminal.
 cd - Change directories.
@@ -229,7 +240,7 @@ help - Print this message.
 ls - List files in a directory.
 open - Jump to a page in the site.
 snake - Arrow keys to move, 'q' to quit.
-`
+`;
     output(helpStr);
 }
 
@@ -248,8 +259,9 @@ function ls(args) {
         return;
     }
 
-    if (entity.data) { // It's a file.
-        files = [args[0]]; 
+    if (entity.data) {
+        // It's a file.
+        files = [args[0]];
     } else {
         files = entity.files;
     }
@@ -277,11 +289,12 @@ function open(args) {
                 url = pwd.replace("~", "") + "/" + args[0].replace(".md", "");
             } else {
                 url = args[0].replace(".md", "");
-
             }
             window.location.href = url;
         } else if (entity && entity.data) {
-            output("open: can only open files with '.md' extension. try `cat` to view source code.");
+            output(
+                "open: can only open files with '.md' extension. try `cat` to view source code."
+            );
         } else if (entity && !entity.data) {
             output("open: " + args[0] + " is a directory");
         } else {
@@ -301,7 +314,8 @@ function hideSnake() {
     jshTextArea.style.display = "block";
 }
 
-var welcomeStr = "Welcome! I'm AJ Bond, an electrical engineering student at Texas A&M University.\n\nI’m seeking an entry-level electrical engineering or software engineering position.\n\nI’ve excelled in classes including Computer Architecture, Digital Design, Circuits, Statistics, Data Structures & Algorithms, Electromagnetics, and Systems Programming.\n\nI also have strong communication skills and an excellent academic record.\n\nType `help` for available commands, or type `exit` to view the rest of the site.\n"
+var welcomeStr =
+    "Welcome! I'm AJ Bond, an electrical engineering student at Texas A&M University.\n\nI’m seeking an entry-level electrical engineering or software engineering position.\n\nI’ve excelled in classes including Computer Architecture, Digital Design, Circuits, Statistics, Data Structures & Algorithms, Electromagnetics, and Systems Programming.\n\nI also have strong communication skills and an excellent academic record.\n\nType `help` for available commands, or type `exit` to view the rest of the site.\n";
 
 var introInterval;
 
@@ -322,7 +336,7 @@ function disableKeyboard(e) {
 snakeCanvas.width = "800";
 snakeCanvas.height = "500";
 
-window.onload = function() {
+window.onload = function () {
     game = new Game(snakeCanvas);
 
     jshTextArea.focus();
@@ -333,7 +347,7 @@ window.onload = function() {
     jshTextArea.addEventListener("keydown", disableKeyboard);
 
     let i = 0;
-    introInterval = setInterval(function() {
+    introInterval = setInterval(function () {
         if (welcomeStr[i]) {
             jshTextArea.value += welcomeStr[i++];
             cursorPos += 1;
@@ -343,5 +357,4 @@ window.onload = function() {
             output("");
         }
     }, 50);
-
-}
+};

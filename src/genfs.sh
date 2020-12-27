@@ -36,4 +36,8 @@ gen() {
 	printf ']}];'
 } > $outfile
 
+if command -v prettier > /dev/null; then
+	prettier -w $outfile
+fi
+
 rm -rf notes

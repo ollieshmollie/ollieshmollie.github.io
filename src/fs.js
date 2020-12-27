@@ -1,10 +1,14 @@
 var fs = [
-{ name: "~", files: [
-{ name: "notes",
-parent: "~",
-files: [
-{ name: "phasors.md",
-data: `---
+    {
+        name: "~",
+        files: [
+            {
+                name: "notes",
+                parent: "~",
+                files: [
+                    {
+                        name: "phasors.md",
+                        data: `---
 layout: page
 title:  "Phasors"
 usemathjax: true
@@ -107,9 +111,11 @@ $$
 i(t)&=\mathcal{Re}\{rac{	ilde{V}e^{-j	heta}}{\sqrt{R^2+(\omega{}L-rac{1}{\omega{}C})^2}}e^{j\omega{}t}\}\
 &=rac{V_0}{\sqrt{R^2+(\omega{}L-rac{1}{\omega{}C})^2}}
 \end{align*}
-`},
-{ name: "testbench.md",
-data: `---
+`,
+                    },
+                    {
+                        name: "testbench.md",
+                        data: `---
 layout: page
 title: Writing a Verilog Test Bench
 ---
@@ -254,9 +260,11 @@ Now for the meat of the test bench. In an \`initial\` block, we need to initiali
 endmodule
 \`\`\`
 
-`},
-{ name: "transmission-lines.md",
-data: `---
+`,
+                    },
+                    {
+                        name: "transmission-lines.md",
+                        data: `---
 layout: page
 title: Wave Propagation On a Transmission Line
 usemathjax: true
@@ -332,7 +340,9 @@ $$
 \end{equation}
 $$
 
-Taking the derivative with respect to $$z$$ of both sides of Eq. (ef{eq:telegraphers_voltage_phasor}) and substituting in Eq. (ef{eq:telegraphers_current_phasor}) for current, we get
+Taking the derivative with respect to $$z$$ of both sides of Eq. (
+ef{eq:telegraphers_voltage_phasor}) and substituting in Eq. (
+ef{eq:telegraphers_current_phasor}) for current, we get
 
 $$-rac{\partial{}^2	ilde{V}(z)}{\partial{}z^2}=-	ilde{V}(z)(G'+j\omega{}C')(R'+j\omega{}L')$$
 
@@ -374,7 +384,9 @@ If we return to the time domain, it is clear these solutions describe the sum of
 
 We now have equations that describe the behavior of voltage and current waves on a transmission line. But we still have four unknown amplitudes.
 
-We can reduce the number of unknowns to two by relating the voltage and current amplitudes. To do this, we substitute Eq. (ef{eq:voltage_general_solution}) into Eq. (ef{eq:telegraphers_voltage_phasor}) and solve for $$	ilde{I}(z)$$.
+We can reduce the number of unknowns to two by relating the voltage and current amplitudes. To do this, we substitute Eq. (
+ef{eq:voltage_general_solution}) into Eq. (
+ef{eq:telegraphers_voltage_phasor}) and solve for $$	ilde{I}(z)$$.
 
 $$
 egin{align*}
@@ -400,7 +412,8 @@ Z_0=rac{R'+j\omega{}L'}{\gamma}=\sqrt{rac{R'+j\omega{}L'}{G'+j\omega{}C'}}
 \end{equation}
 $$
 
-We can now define Eq. (ef{eq:current_general_solution}) in terms of the characteristic impedance.
+We can now define Eq. (
+ef{eq:current_general_solution}) in terms of the characteristic impedance.
 
 $$
 egin{equation}
@@ -418,7 +431,9 @@ $$
 \end{equation}
 $$
 
-which implies that $$lpha=0$$ and $$eta=\omega{}\sqrt{L'C'}$$, or $$\gamma=jeta$$. Thus Eqs. (ef{eq:voltage_general_solution}) and (ef{eq:current_solution_characteristic_impedance}) reduce to
+which implies that $$lpha=0$$ and $$eta=\omega{}\sqrt{L'C'}$$, or $$\gamma=jeta$$. Thus Eqs. (
+ef{eq:voltage_general_solution}) and (
+ef{eq:current_solution_characteristic_impedance}) reduce to
 
 $$
 egin{equation}
@@ -484,7 +499,9 @@ $$
 
 Since $$Z_L$$ is in general a complex number, $$\Gamma_L=ert{}\Gamma_Lert{}e^{j	heta_{\Gamma}}$$. If a load is _matched_{: style="color:red;"}, $$Z_L=Z_0$$ and $$\Gamma_L=0$$; there is no reflection on the line. If $$Z_L=0$$ (a short circuit), $$\Gamma=-1$$. If $$Z_L=\infty$$ (an open circuit), then $$\Gamma=1$$.
 
-Using Eqs. (ef{eq:voltage_wave_lossless}) and (ef{eq:reflection_coefficient_load}), we can now define our wave equations with just one unknown, namely $$V_0^+$$.
+Using Eqs. (
+ef{eq:voltage_wave_lossless}) and (
+ef{eq:reflection_coefficient_load}), we can now define our wave equations with just one unknown, namely $$V_0^+$$.
 
 $$
 egin{equation}
@@ -500,7 +517,9 @@ $$
 
 # The Last Unknown
 
-In order to solve for $$V_0^+$$, we need to apply another boundary condition, this time at the source. Taking the _wave impedance_{: style="color: red;"}, or the impedance at a point $$z$$ on the line, as the ratio of Eqs. (ef{eq:voltage_wave_gamma}) and (ef{eq:current_wave_gamma}), we have
+In order to solve for $$V_0^+$$, we need to apply another boundary condition, this time at the source. Taking the _wave impedance_{: style="color: red;"}, or the impedance at a point $$z$$ on the line, as the ratio of Eqs. (
+ef{eq:voltage_wave_gamma}) and (
+ef{eq:current_wave_gamma}), we have
 
 $$
 egin{align*}
@@ -523,7 +542,9 @@ $$
 \end{equation}
 $$
 
-The voltage at $$z=-l$$ can also be expressed through Eq. (ef{eq:voltage_wave_gamma}), and when combined with Eq. (ef{eq:input_voltage}), give us an expression for $$V_0^+$$.
+The voltage at $$z=-l$$ can also be expressed through Eq. (
+ef{eq:voltage_wave_gamma}), and when combined with Eq. (
+ef{eq:input_voltage}), give us an expression for $$V_0^+$$.
 
 $$
 egin{equation}
@@ -532,7 +553,8 @@ V_0^+=(rac{	ilde{V}_GZ_{in}}{Z_G+Z_{in}})(rac{1}{e^{jeta{}l}+\Gamma_Le^{-jet
 \end{equation}
 $$
 
-Substituting this equation into Eq. (ef{eq:voltage_wave_gamma}) yields the final solution to the voltage and current waves along a transmission line of length $$l$$, depending only on $$l$$ and the parameters of the line $$R'$$, $$G'$$, $$L'$$, and $$C'$$.
+Substituting this equation into Eq. (
+ef{eq:voltage_wave_gamma}) yields the final solution to the voltage and current waves along a transmission line of length $$l$$, depending only on $$l$$ and the parameters of the line $$R'$$, $$G'$$, $$L'$$, and $$C'$$.
 
 $$
 egin{equation}
@@ -544,9 +566,11 @@ $$
 egin{equation}
 \label{eq:current_final_solution}
 \end{equation}
-`},
-{ name: "writing-a-shell-01.md",
-data: `---
+`,
+                    },
+                    {
+                        name: "writing-a-shell-01.md",
+                        data: `---
 layout: page
 title: "Writing a Shell: 01 Lexing and Parsing"
 ---
@@ -1052,9 +1076,11 @@ world']
 }
 ajbond /home/ajbond/Documents/smash>
 \`\`\`
-`},
-{ name: "writing-a-shell-02.md",
-data: `---
+`,
+                    },
+                    {
+                        name: "writing-a-shell-02.md",
+                        data: `---
 layout: page
 title: "Writing a Shell: 02 Built In Commands and Input Files"
 ---
@@ -1066,7 +1092,7 @@ Let's start the execution phase by implementing changing directories. Shells usu
 First, we need to identify whether a command is a directive like \`cd\`. Then, we can write a function to execute those functions specially.
 
 \`\`\`c++
-// shell.cpp
+// exec.cpp
 void exec(Directive *directive) {
     if (directive->name == "cd") {
         exec_cd(directive);
@@ -1077,7 +1103,7 @@ void exec(Directive *directive) {
 Before we implement \`cd\`, let's create a global struct that'll hold some shell environment variables.
 
 \`\`\`c++
-// shell.hpp
+// exec.hpp
 extern struct shell {
     std::string USER;
     std::string HOME;
@@ -1108,7 +1134,7 @@ std::string prompt() {
 Okay, back to \`cd\`. If there are no arguments, we should change to the user's home directory. If the argument is "-" we should change to the previous directory (if there is one). Otherwise, we should try to change to the path supplied by the user. System calls like \`chdir\` use a global number \`errno\` to report any errors; we'll handle some of the more common ones.
 
 \`\`\`c++
-// shell.cpp
+// exec.cpp
 void exec_cd(Directive *directive) {
     string arg, oldpwd = string(std::filesystem::current_path());
 
@@ -1146,7 +1172,7 @@ void exec_cd(Directive *directive) {
 Up until now we've had to hit 'Ctrl C' to exit smash. Let's fix that. The \`exit\` directive is also built in, so we can chck for it in \`exec()\`.
 
 \`\`\`c++
-// shell.cpp
+// exec.cpp
 void exec(Directive *directive) {
     if (directive->name == "cd") {
         exec_cd(directive);
@@ -1159,6 +1185,7 @@ void exec(Directive *directive) {
 The implementation of \`exit\` is a lot simpler than \`cd\`. It can optionally take an exit code as an argument, so we'll check for that first. Then, we'll throw an exception to get back to the main program.
 
 \`\`\`c++
+// exec.cpp
 void exec_exit(Directive *directive) {
     int status = 0;
 
@@ -1180,7 +1207,7 @@ void exec_exit(Directive *directive) {
 The \`Exit\` struct is, as you'd imagine, a struct wrapping an integer.
 
 \`\`\`c++
-// shell.hpp
+// exec.hpp
 struct Exit {
     int status;
     Exit(int status) : status(status) {}
@@ -1294,6 +1321,7 @@ void repl() {
 The \`readfile()\` function is similar, but it consumes tokens from the file until EOF is reached.
 
 \`\`\`c++
+// smash.cpp
 void readfile(string filename) {
     ifstream infile(filename);
     if (!infile.is_open()) {
@@ -1368,9 +1396,11 @@ world']
     }
 }
 ❯
-`},
-{ name: "writing-a-shell-03.md",
-data: `---
+`,
+                    },
+                    {
+                        name: "writing-a-shell-03.md",
+                        data: `---
 layout: page
 title: "Writing a Shell: 03 Executing Commands"
 ---
@@ -1379,12 +1409,104 @@ This chapter is where we finally get to the interesting part of the shell -- exe
 
 # Fork and Exec
 
-For smash to run commands, it needs to create new processes. In Unix, processes can only be created from another process by copying that process wholesale, then overwriting it with a new process. The \`fork()\` and \`exec()\` system calls are what accomplishes this.
+For smash to run commands, it needs the ability to create new processes. In Unix, this is accomplished with \`fork()\`, which creates a duplicate of the current process, and the \`exec\` family of functions, which overwrite the process that invokes it with a new one.
 
-`},
-]},
-{ name: "about.md",
-data: `---
+We'll start by just executing a single directive (i.e., no pipelines). To do this, we'll call fork and then \`execvp\`. Each function in the  \`exec\` family of functions has attributes. The 'v' in \`execvp\` denotes that the function takes a null terminated array of \`char *\` for its second argument, and the 'p' signifies that the path will be searched for the command provided as the first argument.
+
+Since we need a null terminated array of \`char *\`, and the \`args\` field of a \`Directive\` is of type \`vector<string>\`, we need a way to convert the two. Each c++ \`string\` contains a pointer to the underlying \`char *\` array, so copying each of these pointers to a new array should do the trick. What's more, the \`exec\` functions clean up any memory used in their invocation, so we needn't worry about leaks.
+
+Let's add a function to do just that, first in the header...
+
+\`\`\`c++
+struct Directive {
+    bool background;
+    pid_t pid;
+    std::string name, infile, outfile;
+    std::vector<std::string> args;
+    Directive *next;
+
+    char **argv();
+};
+\`\`\`
+
+...and then the implementation file.
+
+\`\`\`c++
+// parse.cpp
+char **Directive::argv() {
+    int argc = args.size() + 2;
+    char **argv = new char *[argc];
+
+    argv[0] = (char *)name.c_str();
+    for (int i = 0; i < argc - 2; ++i) {
+        argv[i + 1] = (char *)args[i].c_str();
+    }
+    argv[argc - 1] = nullptr;
+
+    return argv;
+}
+\`\`\`
+
+Now let's invoke \`fork()\` and \`execvp()\`. The \`fork()\` function returns the pid of the child process in the parent, 0 in the child, and -1 if an error has occurred. The \`execvp()\` function should not return anything (it's overwriting the current process, aftera all), and if it does we know there's been an error. Finally, as the parent process, we need to \`wait()\` on the child process, telling the operating system that the process can be safely removed from its list of running processes.
+
+\`\`\`c++
+// exec.cpp
+void exec(Directive *directive) {
+    if (!directive) {
+        return;
+    }
+
+    if (directive->name == "cd") {
+        exec_cd(directive);
+    } else if (directive->name == "exit") {
+        exec_exit(directive);
+    } else {
+        // Fork the current process.
+        if ((directive->pid = fork()) == -1) {
+            throw ShellError("fork: an unknown error has occurred (errno = " +
+                             to_string(errno) + ")");
+        }
+
+        // If we're in the child process...
+        if (directive->pid == 0) {
+            char **argv = ptr->argv();
+
+            // Pass the name of the command to exec, and the null terminated
+            // argument array (including the name of the command) to the new process.
+            if (execvp(argv[0], argv)) {
+                switch (errno) {
+                case EACCES:
+                    throw ProcessError(ptr->name + ": permission denied");
+                case ENOENT:
+                    throw ProcessError(ptr->name +
+                                       ": no such file or directory");
+                case ENAMETOOLONG:
+                    throw ProcessError(ptr->name + ": pathname is too long");
+                default:
+                    throw ProcessError(
+                        "exec: an unknown error has occurred (errno = " +
+                        to_string(errno) + ")");
+                }
+            }
+        }
+
+        // Wait until the child process is finished, and have the os reap it.
+        if (waitpid(directive->pid, NULL, 0) == -1) {
+            ShellError("waitpid: an unknown error has occurred (errno = " +
+                        to_string(errno) + ")");
+        }
+    }
+}
+\`\`\`
+
+# Background Processes
+`,
+                    },
+                ],
+            },
+            {
+                name: "about.md",
+                data: `---
 layout: home
 title: About
 permalink: /about/
@@ -1397,12 +1519,19 @@ I’m seeking an entry-level electrical engineering or software engineering posi
 Outside of school, I like to program in C, C++, Rust, and Go, and I'm working to deliver safe and reliable power to the AggieSat6 satellite, which will hopefully be launched in 2022. My portfolio contains details on these and other projects.
 
 I have the talent, perspective, and people skills to make your organization better. Feel free to drop me a line, and thanks for reading.
-`},
-{ name: "index.md",
-data: `---
-# Feel free to add content and custom Front Matter to this file.
-# To modify the layout, see https://jekyllrb.com/docs/themes/#overriding-theme-defaults
+`,
+            },
+            {
+                name: "index.md",
+                data: `---
+layout: jsh
 ---
+
+<html>
+<head>
+<title>AJ Bond</title>
+</head>
+<body>
 <link rel="stylesheet" href="{{ "/assets/main.css" | relative_url }}">
 <link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro&display=swap" rel="stylesheet">
@@ -1418,9 +1547,14 @@ data: `---
 
 <script src="src/fs.js" type="text/javascript"></script>
 <script src="src/jsh.js" type="text/javascript"></script>
-`},
-{ name: "notes.md",
-data: `---
+<script src="src/snake.js" type="text/javascript"></script>
+</body>
+</html>
+`,
+            },
+            {
+                name: "notes.md",
+                data: `---
 layout: page
 title: Notes
 permalink: /notes/
@@ -1438,9 +1572,11 @@ permalink: /notes/
     </ul>
 
   {%- endif -%}
-`},
-{ name: "portfolio.md",
-data: `---
+`,
+            },
+            {
+                name: "portfolio.md",
+                data: `---
 layout: page
 title: Portfolio
 permalink: /portfolio/
@@ -1471,9 +1607,11 @@ I found a great <a href="https://justinmeiners.github.io/lc3-vm/">tutorial</a> o
 [Orng](https://github.com/olishmollie/orng)
 I was looking for a project to do in C++, and when I saw Rob Pike's <a href="https://github.com/robpike/ivy">Ivy</a>, I knew I had found one. It was also a great introduction to APL.
 </div>
-`},
-{ name: "resume.md",
-data: `---
+`,
+            },
+            {
+                name: "resume.md",
+                data: `---
 layout: page
 title: Resume
 permalink: /resume/
@@ -1513,9 +1651,11 @@ permalink: /resume/
 
 - _Songwriting/Music_
   - Written songs and played guitar, bass, vocals, and drums in several bands. Featured on KUTX in Austin.
-`},
-{ name: "terminal.md",
-data: `---
+`,
+            },
+            {
+                name: "terminal.md",
+                data: `---
 # Feel free to add content and custom Front Matter to this file.
 # To modify the layout, see https://jekyllrb.com/docs/themes/#overriding-theme-defaults
 ---
@@ -1534,5 +1674,8 @@ data: `---
 
 <script src="src/fs.js" type="text/javascript"></script>
 <script src="src/jsh.js" type="text/javascript"></script>
-`},
-]}];
+`,
+            },
+        ],
+    },
+];
