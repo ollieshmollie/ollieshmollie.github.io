@@ -217,13 +217,10 @@ void repl() {
     while (true) {
         try {
             cout << prompt();
-
             directive = Parser(lexer).parse();
-
             if (directive) {
                 cout << directive << endl;
             }
-
             reap_jobs();
         } catch (LexError &err) {
             cerr << "Lex error: " << err.what() << endl;
