@@ -8,6 +8,7 @@
     background: #000000;
     color: lightgreen;
     border: 5px solid gray;
+    display: flex;
 }
 
 #jshTextArea {
@@ -28,6 +29,9 @@
     background: inherit;
     color: inherit;
     border: 1px solid gray;
+    margin: auto;
+    justify-content: center;
+    align-items: center;
 }
 
 .item {

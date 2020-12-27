@@ -244,7 +244,6 @@ class Game {
         this.over = false;
         var game = this;
         this.loop = setTimeout(function() {
-            console.log(game.score);
             game.serpent.move();
             game.checkTreat();
             game.offerTreat();
