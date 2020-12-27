@@ -10,7 +10,7 @@ Let's start the execution phase by implementing changing directories. Shells usu
 First, we need to identify whether a command is a directive like `cd`. Then, we can write a function to execute those functions specially.
 
 ```c++
-// shell.cpp
+// exec.cpp
 void exec(Directive *directive) {
     if (directive->name == "cd") {
         exec_cd(directive);
@@ -21,7 +21,7 @@ void exec(Directive *directive) {
 Before we implement `cd`, let's create a global struct that'll hold some shell environment variables.
 
 ```c++
-// shell.hpp
+// exec.hpp
 extern struct shell {
     std::string USER;
     std::string HOME;
@@ -52,7 +52,7 @@ std::string prompt() {
 Okay, back to `cd`. If there are no arguments, we should change to the user's home directory. If the argument is "-" we should change to the previous directory (if there is one). Otherwise, we should try to change to the path supplied by the user. System calls like `chdir` use a global number `errno` to report any errors; we'll handle some of the more common ones.
 
 ```c++
-// shell.cpp
+// exec.cpp
 void exec_cd(Directive *directive) {
     string arg, oldpwd = string(std::filesystem::current_path());
 
@@ -90,7 +90,7 @@ void exec_cd(Directive *directive) {
 Up until now we've had to hit 'Ctrl C' to exit smash. Let's fix that. The `exit` directive is also built in, so we can chck for it in `exec()`.
 
 ```c++
-// shell.cpp
+// exec.cpp
 void exec(Directive *directive) {
     if (directive->name == "cd") {
         exec_cd(directive);
@@ -103,6 +103,7 @@ void exec(Directive *directive) {
 The implementation of `exit` is a lot simpler than `cd`. It can optionally take an exit code as an argument, so we'll check for that first. Then, we'll throw an exception to get back to the main program.
 
 ```c++
+// exec.cpp
 void exec_exit(Directive *directive) {
     int status = 0;
 
@@ -124,7 +125,7 @@ void exec_exit(Directive *directive) {
 The `Exit` struct is, as you'd imagine, a struct wrapping an integer.
 
 ```c++
-// shell.hpp
+// exec.hpp
 struct Exit {
     int status;
     Exit(int status) : status(status) {}
@@ -238,6 +239,7 @@ void repl() {
 The `readfile()` function is similar, but it consumes tokens from the file until EOF is reached.
 
 ```c++
+// smash.cpp
 void readfile(string filename) {
     ifstream infile(filename);
     if (!infile.is_open()) {
