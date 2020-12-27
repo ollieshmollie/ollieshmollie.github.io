@@ -8,6 +8,6 @@ permalink: /about/
 
 I’m seeking an entry-level electrical engineering or software engineering position. I’ve excelled in classes including Computer Architecture, Digital Design, Circuits, Statistics, Data Structures & Algorithms, Electromagnetics, and Systems Programming. I also have strong communication skills and an excellent academic record.
 
-Outside of school, I like to program in C, C++, Rust, and Go, and I'm working to deliver safe and reliable power to the AggieSat6 satellite, which will hopefully be launched in 2022. My portfolio contains details on these and other projects.
+Outside of school, I like to program in C, C++, Rust, and Go, and I'm working to deliver safe and reliable power to the AggieSat 6 nanosatellite, which will hopefully be launched in 2022. My portfolio contains details on these and other projects.
 
 I have the talent, perspective, and people skills to make your organization better. Feel free to drop me a line, and thanks for reading.
