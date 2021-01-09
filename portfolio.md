@@ -11,8 +11,8 @@ We're participating in the University NanoSatellite Program and aiming to launch
 </div>
 
 <div class="item" markdown="1">
-[Fig](https://github.com/olishmollie/fig):
-The token Scheme implementation. I'm proud of this one because it's in C99 and I implemented a tracing garbage collector for it. I love the name, too. I wrote a Go port of it called GoFig. Yessssssss.
+<a href="/programming_assignment.pdf" download>Probability Project</a>
+As an extra-credit project in Random Signals and Systems, I developed a simulation in Python of a random experiment involving multiple Poisson and exponential random variables. After using the simulation to predict the mean and variance of the scenario, I proved it using the laws of probability. Use the link above to download the report.
 </div>
 
 <div class="item" markdown="1">
@@ -28,4 +28,9 @@ I found a great <a href="https://justinmeiners.github.io/lc3-vm/">tutorial</a> o
 <div class="item" markdown="1">
 [Orng](https://github.com/olishmollie/orng)
 I was looking for a project to do in C++, and when I saw Rob Pike's <a href="https://github.com/robpike/ivy">Ivy</a>, I knew I had found one. It was also a great introduction to APL.
+</div>
+
+<div class="item" markdown="1">
+[Fig](https://github.com/olishmollie/fig):
+The token Scheme implementation. I'm proud of this one because it's in C99 and I implemented a tracing garbage collector for it. I love the name, too. I wrote a Go port of it called GoFig. Yessssssss.
 </div>
