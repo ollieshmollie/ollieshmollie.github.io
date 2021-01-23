@@ -1,9 +1,12 @@
 #! /usr/bin/env sh
 
+## Outputs the contents of certain files into a JSON 'filesystem' so users
+## can read source files in the JavaScript 'shell'.
+
 mkdir notes
 cp _notes/*.md notes/
 
-outfile='src/fs.js'
+outfile='src/filesystem.js'
 
 gen() {
 	for file in $1; do
@@ -33,6 +36,7 @@ gen() {
 	echo '{ name: "~", files: ['
 	gen "notes"
 	gen "*.md"
+	gen "src"
 	printf ']}];'
 } > $outfile
 

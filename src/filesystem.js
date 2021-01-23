@@ -16,7 +16,7 @@ usemathjax: true
 
 # Motivation
 
-Sometimes dealing with sinusoidal signals in the time domain can be a hassle. Consider finding the steady-state current of the circuit below, with $$v(t)=V_0
+Sometimes dealing with sinusoidal signals in the time domain can be a hassle. Consider finding the steady-state current of the circuit below, with $$v(t)=V_0\cos(\omega{}t+\phi)$$.
 
 <p align="center">
     <img src="/rlc_circuit.png" alt="RLC Circuit"/>
@@ -24,7 +24,7 @@ Sometimes dealing with sinusoidal signals in the time domain can be a hassle. Co
 
 From circuit theory, we know that the capacitor current is proportional to the derivative of the voltage, while the current across the inductor is the integral of the voltage. Therefore, using Kirchoff's voltage law,
 
-$$v(t)=rac{1}{C}\int_{-\infty}^{t}i(x)dx+Lrac{	ext{d}i(t)}{	ext{d}t}+Ri(t)$$
+$$v(t)=\frac{1}{C}\int_{-\infty}^{t}i(x)dx+L\frac{\text{d}i(t)}{\text{d}t}+Ri(t)$$
 
 I don't know about you, but that's not an integro-differential equation I can solve very easily. Luckily, thanks to [Charles Proteus Steinmetz](https://en.wikipedia.org/wiki/Charles_Proteus_Steinmetz), there's a better way.
 
@@ -33,36 +33,36 @@ I don't know about you, but that's not an integro-differential equation I can so
 If one were trying to find a simpler way to solve our problem, one might begin with the fact that this cicrcuit's input frequency equals its output frequency. We might therefore seek a time-independent quantity that carries the the magnitude and phase of the signal to simplify the analysis. A phasor is just such a quantity, and we'll use Euler's indentity to find it. We begin by recognizing that our cosine function is in fact the real part of a complex exponential.
 
 $$
-egin{align*}
-v(t)&=\mathcal{Re}\{V_0e^{j(\omega{}t+\phi)}\}\
-&=\mathcal{Re}\{V_0e^{j\omega{}t}e^{j\phi}\}\
+\begin{align*}
+v(t)&=\mathcal{Re}\{V_0e^{j(\omega{}t+\phi)}\}\\
+&=\mathcal{Re}\{V_0e^{j\omega{}t}e^{j\phi}\}\\
 \end{align*}
 $$
 
 Ignoring the time-dependent exponential, the phasor becomes $$V_0e^{j\phi}$$. The _phasor transform_ is carried out by representing a sinusoidal signal with its phasor, or
 
-$$	ilde{V}=V_0e^{j\phi}=\mathcal{P}\{V_0
+$$\tilde{V}=V_0e^{j\phi}=\mathcal{P}\{V_0\cos(\omega{}t+\phi)\}$$
 
 But why is it useful? To find out, let's take each element in our circuit and find its $$VI$$ relationship in phasor form. Beginning with the resistor, we start with Ohm's Law and perfrom the phase transform to both sides to obtain
 
 $$
-egin{align*}
-v(t)&=RI_0
-&=\mathcal{Re}\{RI_0
-	ilde{V}&=R	ilde{I}
+\begin{align*}
+v(t)&=RI_0\cos(\omega{}t+\phi)\\
+&=\mathcal{Re}\{RI_0\cos(\omega{}t+\phi)\}\\
+\tilde{V}&=R\tilde{I}
 \end{align*}
 $$
 
 Next, let's perform similar steps with the inductor.
 
 $$
-egin{align*}
-v(t)&=Lrac{	ext{d}}{	ext{d}t}I_0
-&=-\omega{}LI_0\sin(\omega{}t+\phi)\
-&=-\omega{}LI_0
-&=-\omega{}L\mathcal{Re}\{I_0
-&=-\omega{}L	ilde{I}e^{-j\pi/2}\
-	ilde{V}&=j\omega{}L	ilde{I}
+\begin{align*}
+v(t)&=L\frac{\text{d}}{\text{d}t}I_0\cos(\omega{}t+\phi)\\
+&=-\omega{}LI_0\sin(\omega{}t+\phi)\\
+&=-\omega{}LI_0\cos(\omega{}t+\phi-\pi/2)\\
+&=-\omega{}L\mathcal{Re}\{I_0\cos(\omega{}t+\phi-\pi/2)\}\\
+&=-\omega{}L\tilde{I}e^{-j\pi/2}\\
+\tilde{V}&=j\omega{}L\tilde{I}
 \end{align*}
 $$
 
@@ -70,46 +70,46 @@ $$
 where we have used the identity $$e^{-j\pi/2}=-j$$. Finally, we address the capacitor.
 
 $$
-egin{align*}
-v(t)&=rac{1}{C}\int_{-\infty}^{t}I_0
-&=rac{1}{\omega{}C}I_0\sin(\omega{}t+\phi)\
-&=rac{1}{\omega{}C}I_0
-&=rac{1}{\omega{}C}	ilde{I}e^{-j\pi/2}\
-&=rac{-j}{\omega{}C}	ilde{I}\
-	ilde{V}&=rac{1}{j\omega{}C}	ilde{I}
+\begin{align*}
+v(t)&=\frac{1}{C}\int_{-\infty}^{t}I_0\cos(\omega{}t+\phi)dx\\
+&=\frac{1}{\omega{}C}I_0\sin(\omega{}t+\phi)\\
+&=\frac{1}{\omega{}C}I_0\cos(\omega{}t+\phi-pi/2)\\
+&=\frac{1}{\omega{}C}\tilde{I}e^{-j\pi/2}\\
+&=\frac{-j}{\omega{}C}\tilde{I}\\
+\tilde{V}&=\frac{1}{j\omega{}C}\tilde{I}
 \end{align*}
 $$
 
-In the phasor representation, also known as the _frequency domain_, we define the concept of impedance to current flow, $$Z=	ilde{V}/	ilde{I}$$, for each of the above elements as
+In the phasor representation, also known as the _frequency domain_, we define the concept of impedance to current flow, $$Z=\tilde{V}/\tilde{I}$$, for each of the above elements as
 
-$$Z_R=R\qquad{}Z_L=j\omega{}L\qquad{}Z_C=rac{1}{j\omega{}C}$$
+$$Z_R=R\qquad{}Z_L=j\omega{}L\qquad{}Z_C=\frac{1}{j\omega{}C}$$
 
 # Method
 
 Let's revisit our original problem, this time replacing all the time-dependent quantities with phasors.
 
 $$
-egin{align*}
-	ilde{V}&=rac{1}{j\omega{}C}	ilde{I}+j\omega{}L	ilde{I}+R	ilde{I}\
-&=	ilde{I}(rac{1}{j\omega{}C}+j\omega{}L+R)\
+\begin{align*}
+\tilde{V}&=\frac{1}{j\omega{}C}\tilde{I}+j\omega{}L\tilde{I}+R\tilde{I}\\
+&=\tilde{I}(\frac{1}{j\omega{}C}+j\omega{}L+R)\\
 \end{align*}
 $$
 
 Solving for current,
 
 $$
-egin{align*}
-	ilde{I}&=rac{	ilde{V}}{R+j(\omega{}L-rac{1}{\omega{}C})}\
-&=rac{	ilde{V}e^{-j	heta}}{\sqrt{R^2+(\omega{}L-rac{1}{\omega{}C})^2}}	ag{$	heta=	an^{-1}(rac{\omega{}L-rac{1}{\omega{}C}}{R})$}\
+\begin{align*}
+\tilde{I}&=\frac{\tilde{V}}{R+j(\omega{}L-\frac{1}{\omega{}C})}\\
+&=\frac{\tilde{V}e^{-j\theta}}{\sqrt{R^2+(\omega{}L-\frac{1}{\omega{}C})^2}}\tag{$\theta=\tan^{-1}(\frac{\omega{}L-\frac{1}{\omega{}C}}{R})$}\\
 \end{align*}
 $$
 
 Now we can convert these quantities back into the time domain for the final solution.
 
 $$
-egin{align*}
-i(t)&=\mathcal{Re}\{rac{	ilde{V}e^{-j	heta}}{\sqrt{R^2+(\omega{}L-rac{1}{\omega{}C})^2}}e^{j\omega{}t}\}\
-&=rac{V_0}{\sqrt{R^2+(\omega{}L-rac{1}{\omega{}C})^2}}
+\begin{align*}
+i(t)&=\mathcal{Re}\{\frac{\tilde{V}e^{-j\theta}}{\sqrt{R^2+(\omega{}L-\frac{1}{\omega{}C})^2}}e^{j\omega{}t}\}\\
+&=\frac{V_0}{\sqrt{R^2+(\omega{}L-\frac{1}{\omega{}C})^2}}\cos(\omega{}t-\theta)\\
 \end{align*}
 `,
                     },
@@ -194,7 +194,7 @@ We could pretty easily just hardcode all the inputs and expected outputs, but th
       if(actual == expected) begin
         $display("%s passed", name);
         passCount += 1;
-      end else $display("%s failed: output: %x	expected: %x", name, actual, expected);
+      end else $display("%s failed: output: %x\texpected: %x", name, actual, expected);
    endtask
 \`\`\`
 
@@ -269,7 +269,7 @@ layout: page
 title: Wave Propagation On a Transmission Line
 usemathjax: true
 ---
-If an electrical line is long enough ($$rac{l}{\lambda}\gtrapprox{}0.01$$), the effects of the length must be taken into account. We call such lines _TEM transmission lines_{: style="color: red;"}, and they consist of two conductors separated by a dielectric material (for example, a coaxial cable).
+If an electrical line is long enough ($$\frac{l}{\lambda}\gtrapprox{}0.01$$), the effects of the length must be taken into account. We call such lines _TEM transmission lines_{: style="color: red;"}, and they consist of two conductors separated by a dielectric material (for example, a coaxial cable).
 
 # The Telegrapher's Equations
 
@@ -289,16 +289,16 @@ The circuit parameters shown depend on the geometry of the transmission line and
 These parameters depend on the geometry and the materials of the line itself. KVL around the outer loop obtains
 
 $$
-egin{align*}
-v(z,t)-v(z+\Delta{}z,t)=R'\Delta{}zi(z,t)+L'\Delta{}z\pderiv{i(z,t)}{t}\
--rac{v(z+\Delta{}z,t)-v(z,t)}{\Delta{}z}=R'i(z,t)+L'\pderiv{i(z,t)}{t}
+\begin{align*}
+v(z,t)-v(z+\Delta{}z,t)=R'\Delta{}zi(z,t)+L'\Delta{}z\pderiv{i(z,t)}{t}\\
+-\frac{v(z+\Delta{}z,t)-v(z,t)}{\Delta{}z}=R'i(z,t)+L'\pderiv{i(z,t)}{t}
 \end{align*}
 $$
 
 Letting $$n$$ grow to infinity, the equation becomes the first of the Telegrapher's Equations, describing voltage.
 
 $$
-egin{equation}
+\begin{equation}
 -\pderiv{v(z,t)}{z}=R'i(z,t)+L'\pderiv{i(z,t)}{t}
 \label{eq:telegraphers_voltage}
 \end{equation}
@@ -307,16 +307,16 @@ $$
 A similar process with KCL down the shunt gives
 
 $$
-egin{align*}
-i(z,t)-i(z+\Delta{}z,t)&=G'\Delta{}zv(z,t)+C'\pderiv{v(z,t)}{t}\
--rac{[i(z+\Delta{}z,t)-i(z,t)]}{\Delta{}z}&=G'v(z,t)+C'\pderiv{v(z,t)}{t}\
+\begin{align*}
+i(z,t)-i(z+\Delta{}z,t)&=G'\Delta{}zv(z,t)+C'\pderiv{v(z,t)}{t}\\
+-\frac{[i(z+\Delta{}z,t)-i(z,t)]}{\Delta{}z}&=G'v(z,t)+C'\pderiv{v(z,t)}{t}\\
 \end{align*}
 $$
 
 Again letting $$n$$ grow infinitely large yields the second Telegrapher's Equation, describing current.
 
 $$
-egin{equation}
+\begin{equation}
 -\pderiv{i(z,t)}{z}=G'v(z,t)+C'\pderiv{v(z,t)}{t}
 \label{eq:telegraphers_current}
 \end{equation}
@@ -327,39 +327,37 @@ $$
 One fruitful avenue of analysis is the behavior of sinusoidal steady-state voltages and currents along transmission lines. To that end, we use the phasor form of the Telegrapher's Equations.
 
 $$
-egin{equation}
--\deriv{	ilde{V}(z)}{z}=	ilde{I}(z)(R'+j\omega{}L')
+\begin{equation}
+-\deriv{\tilde{V}(z)}{z}=\tilde{I}(z)(R'+j\omega{}L')
 \label{eq:telegraphers_voltage_phasor}
 \end{equation}
 $$
 
 $$
-egin{equation}
--\deriv{	ilde{I}(z)}{z}=	ilde{V}(z)(G'+j\omega{}C')
+\begin{equation}
+-\deriv{\tilde{I}(z)}{z}=\tilde{V}(z)(G'+j\omega{}C')
 \label{eq:telegraphers_current_phasor}
 \end{equation}
 $$
 
-Taking the derivative with respect to $$z$$ of both sides of Eq. (
-ef{eq:telegraphers_voltage_phasor}) and substituting in Eq. (
-ef{eq:telegraphers_current_phasor}) for current, we get
+Taking the derivative with respect to $$z$$ of both sides of Eq. (\ref{eq:telegraphers_voltage_phasor}) and substituting in Eq. (\ref{eq:telegraphers_current_phasor}) for current, we get
 
-$$-rac{\partial{}^2	ilde{V}(z)}{\partial{}z^2}=-	ilde{V}(z)(G'+j\omega{}C')(R'+j\omega{}L')$$
+$$-\frac{\partial{}^2\tilde{V}(z)}{\partial{}z^2}=-\tilde{V}(z)(G'+j\omega{}C')(R'+j\omega{}L')$$
 
 A little bit of rearrangement yields a wave equation
 
 $$
-egin{equation}
-rac{\partial{}^2	ilde{V}(z)}{\partial{}z^2}-\gamma^2	ilde{V}(z)=0
+\begin{equation}
+\frac{\partial{}^2\tilde{V}(z)}{\partial{}z^2}-\gamma^2\tilde{V}(z)=0
 \label{eq:voltage_wave}
 \end{equation}
 $$
 
-where $$\gamma=\sqrt{(R'+j\omega{}L')(G'+j\omega{}C')}=lpha+jeta$$ is defined as the _propagation constant_{: style="color: red;"} of the transmission line. It consists of a real part, an _attenuation constant_{: style="color: red;"} $$lpha$$, and a _phase constant_{: style="color: red;"} $$eta$$. A similar procedure obtains the corresponding current wave equation.
+where $$\gamma=\sqrt{(R'+j\omega{}L')(G'+j\omega{}C')}=\alpha+j\beta$$ is defined as the _propagation constant_{: style="color: red;"} of the transmission line. It consists of a real part, an _attenuation constant_{: style="color: red;"} $$\alpha$$, and a _phase constant_{: style="color: red;"} $$\beta$$. A similar procedure obtains the corresponding current wave equation.
 
 $$
-egin{equation}
-rac{\partial{}^2	ilde{I}(z)}{\partial{}z^2}-\gamma^2	ilde{I}(z)=0
+\begin{equation}
+\frac{\partial{}^2\tilde{I}(z)}{\partial{}z^2}-\gamma^2\tilde{I}(z)=0
 \label{eq:current_wave}
 \end{equation}
 $$
@@ -367,14 +365,16 @@ $$
 The general solution of these equations is well known, and takes the form
 
 $$
-egin{equation}
+\begin{equation}
+\color{blue}{\tilde{V}(z)=V_0^+e^{-\gamma{}z}+V_0^-e^{\gamma{}z}}
 \label{eq:voltage_general_solution}
 \end{equation}
 $$
 
 $$
-egin{equation}
+\begin{equation}
 \label{eq:current_general_solution}
+\color{blue}{\tilde{I}(z)=I_0^+e^{-\gamma{}z}+I_0^-e^{\gamma{}z}}
 \end{equation}
 $$
 
@@ -384,39 +384,37 @@ If we return to the time domain, it is clear these solutions describe the sum of
 
 We now have equations that describe the behavior of voltage and current waves on a transmission line. But we still have four unknown amplitudes.
 
-We can reduce the number of unknowns to two by relating the voltage and current amplitudes. To do this, we substitute Eq. (
-ef{eq:voltage_general_solution}) into Eq. (
-ef{eq:telegraphers_voltage_phasor}) and solve for $$	ilde{I}(z)$$.
+We can reduce the number of unknowns to two by relating the voltage and current amplitudes. To do this, we substitute Eq. (\ref{eq:voltage_general_solution}) into Eq. (\ref{eq:telegraphers_voltage_phasor}) and solve for $$\tilde{I}(z)$$.
 
 $$
-egin{align*}
-	ilde{I}(z)&=I_0^+e^{-j\gamma}+I_0^-e^{j\gamma}\
-&=rac{\gamma}{R'+j\omega{}L'}(V_0^+e^{-\gamma{}z}-V_0^-e^{\gamma{}z})\
+\begin{align*}
+\tilde{I}(z)&=I_0^+e^{-j\gamma}+I_0^-e^{j\gamma}\\
+&=\frac{\gamma}{R'+j\omega{}L'}(V_0^+e^{-\gamma{}z}-V_0^-e^{\gamma{}z})\\
 \end{align*}
 $$
 
 Comparing the amplitudes of voltage and current, it is clear that
 
 $$
-egin{equation}
-V_0^+=rac{I_0^+}{Z_0}\qquad{}V_0^-=-rac{I_0^-}{Z_0}
+\begin{equation}
+V_0^+=\frac{I_0^+}{Z_0}\qquad{}V_0^-=-\frac{I_0^-}{Z_0}
 \end{equation}
 $$
 
 where $$Z_0$$ is defined as the _characteristic impedance_{: style="color: red;"} and given by
 
 $$
-egin{equation}
-Z_0=rac{R'+j\omega{}L'}{\gamma}=\sqrt{rac{R'+j\omega{}L'}{G'+j\omega{}C'}}
+\begin{equation}
+Z_0=\frac{R'+j\omega{}L'}{\gamma}=\sqrt{\frac{R'+j\omega{}L'}{G'+j\omega{}C'}}
 \label{eq:characteristic_impedance_general}
 \end{equation}
 $$
 
-We can now define Eq. (
-ef{eq:current_general_solution}) in terms of the characteristic impedance.
+We can now define Eq. (\ref{eq:current_general_solution}) in terms of the characteristic impedance.
 
 $$
-egin{equation}
+\begin{equation}
+\color{blue}{\tilde{I}(z)=\frac{V_0^+}{Z_0}e^{-\gamma{}z}-\frac{V_0^-}{Z_0}e^{\gamma{}z}}
 \label{eq:current_solution_characteristic_impedance}
 \end{equation}
 $$
@@ -426,23 +424,23 @@ $$
 A well designed transmission line uses conductors with high conductivity and dielectrics with high resistivity, making $$R'$$ and $$G'$$ very small. In the ideal case, $$R'=G'=0$$ and the line is considered "lossless". The propagation constant of such a line reduces to
 
 $$
-egin{equation}
-\gamma=lpha+jeta=j\omega{}\sqrt{L'C'}
+\begin{equation}
+\gamma=\alpha+j\beta=j\omega{}\sqrt{L'C'}
 \end{equation}
 $$
 
-which implies that $$lpha=0$$ and $$eta=\omega{}\sqrt{L'C'}$$, or $$\gamma=jeta$$. Thus Eqs. (
-ef{eq:voltage_general_solution}) and (
-ef{eq:current_solution_characteristic_impedance}) reduce to
+which implies that $$\alpha=0$$ and $$\beta=\omega{}\sqrt{L'C'}$$, or $$\gamma=j\beta$$. Thus Eqs. (\ref{eq:voltage_general_solution}) and (\ref{eq:current_solution_characteristic_impedance}) reduce to
 
 $$
-egin{equation}
+\begin{equation}
+\color{blue}{\tilde{V}(z)=V_0^+e^{-j\beta{}z}+V_0^-e^{j\beta{}z}}
 \label{eq:voltage_wave_lossless}
 \end{equation}
 $$
 
 $$
-egin{equation}
+\begin{equation}
+\color{blue}{\tilde{I}(z)=\frac{V_0^+}{Z_0}e^{-j\beta{}z}-\frac{V_0^-}{Z_0}e^{j\beta{}z}}
 \label{eq:current_wave_lossless}
 \end{equation}
 $$
@@ -450,30 +448,30 @@ $$
 Similarly, the characteristic impedance of a lossless line is given by
 
 $$
-egin{equation}
-Z_0=\sqrt{rac{L'}{C'}}
+\begin{equation}
+Z_0=\sqrt{\frac{L'}{C'}}
 \label{eq:characteristic_impedance_lossless}
 \end{equation}
 $$
 
-The fact that a wave's velocity is given by $$u_p=rac{\omega}{eta}$$ implies that, in the case of a lossless line, the phase velocity is given by
+The fact that a wave's velocity is given by $$u_p=\frac{\omega}{\beta}$$ implies that, in the case of a lossless line, the phase velocity is given by
 
-$$u_p=rac{\omega}{eta}=rac{\omega}{\omega{}\sqrt{L'C'}}=rac{1}{\sqrt{L'C'}}$$
+$$u_p=\frac{\omega}{\beta}=\frac{\omega}{\omega{}\sqrt{L'C'}}=\frac{1}{\sqrt{L'C'}}$$
 
 Thus, the velocity of the wave is independent of its frequency. In this way, dispersion (where different frequencies that make up a signal travel at different speeds and therefore arrive at different times, causing distortion) is avoided.
 
-Interestingly, the condition known as the _Heaviside Condition_{: style="color: red;"}, satisfied if $$rac{G'}{C'}=rac{R'}{L'}$$, also eliminates dispersion. Given the Heaviside Condtion,
+Interestingly, the condition known as the _Heaviside Condition_{: style="color: red;"}, satisfied if $$\frac{G'}{C'}=\frac{R'}{L'}$$, also eliminates dispersion. Given the Heaviside Condtion,
 
 $$
-egin{align*}
-\gamma&=\sqrt{(R'+j\omega{}L')(G'+j\omega{}C')}\
-&=\sqrt{L'C'(rac{R'}{L'}+j\omega{})(rac{G'}{C'}+j\omega{})}\
-&=\sqrt{R'G'}+j\omega{}\sqrt{L'C'}\
-&=lpha+jeta\
+\begin{align*}
+\gamma&=\sqrt{(R'+j\omega{}L')(G'+j\omega{}C')}\\
+&=\sqrt{L'C'(\frac{R'}{L'}+j\omega{})(\frac{G'}{C'}+j\omega{})}\\
+&=\sqrt{R'G'}+j\omega{}\sqrt{L'C'}\\
+&=\alpha+j\beta\\
 \end{align*}
 $$
 
-Again, the velocity $$u_p=rac{\omega}{eta}$$ does not depend on frequency, and the the line is known as "distortionless".
+Again, the velocity $$u_p=\frac{\omega}{\beta}$$ does not depend on frequency, and the the line is known as "distortionless".
 
 # Reflection Coefficient
 
@@ -486,84 +484,81 @@ Limiting ourselves to the lossless case, we apply a boundary condition at the lo
 
 With this in mind, the impedance at the load is
 
-$$Z_L=rac{	ilde{V}(0)}{	ilde{I}(0)}=Z_0rac{V_0^++V_0^-}{V_0^+-V_0^-}$$
+$$Z_L=\frac{\tilde{V}(0)}{\tilde{I}(0)}=Z_0\frac{V_0^++V_0^-}{V_0^+-V_0^-}$$
 
 Solving for the ratio of the amplitudes of the incident and reflected waves yields the the _voltage reflection coefficient_{: style="color: red;"} at the load, defined as
 
 $$
-egin{equation}
-\Gamma_L=rac{V_0^-}{V_0^+}=rac{Z_L-Z_0}{Z_L+Z_0}
+\begin{equation}
+\Gamma_L=\frac{V_0^-}{V_0^+}=\frac{Z_L-Z_0}{Z_L+Z_0}
 \label{eq:reflection_coefficient_load}
 \end{equation}
 $$
 
-Since $$Z_L$$ is in general a complex number, $$\Gamma_L=ert{}\Gamma_Lert{}e^{j	heta_{\Gamma}}$$. If a load is _matched_{: style="color:red;"}, $$Z_L=Z_0$$ and $$\Gamma_L=0$$; there is no reflection on the line. If $$Z_L=0$$ (a short circuit), $$\Gamma=-1$$. If $$Z_L=\infty$$ (an open circuit), then $$\Gamma=1$$.
+Since $$Z_L$$ is in general a complex number, $$\Gamma_L=\vert{}\Gamma_L\vert{}e^{j\theta_{\Gamma}}$$. If a load is _matched_{: style="color:red;"}, $$Z_L=Z_0$$ and $$\Gamma_L=0$$; there is no reflection on the line. If $$Z_L=0$$ (a short circuit), $$\Gamma=-1$$. If $$Z_L=\infty$$ (an open circuit), then $$\Gamma=1$$.
 
-Using Eqs. (
-ef{eq:voltage_wave_lossless}) and (
-ef{eq:reflection_coefficient_load}), we can now define our wave equations with just one unknown, namely $$V_0^+$$.
+Using Eqs. (\ref{eq:voltage_wave_lossless}) and (\ref{eq:reflection_coefficient_load}), we can now define our wave equations with just one unknown, namely $$V_0^+$$.
 
 $$
-egin{equation}
+\begin{equation}
+\color{blue}{\tilde{V}(z)=V_0^+(e^{-j\beta{}z}+\Gamma_L{}e^{j\beta{}z})}
 \label{eq:voltage_wave_gamma}
 \end{equation}
 $$
 
 $$
-egin{equation}
+\begin{equation}
+\color{blue}{\tilde{I}(z)=\frac{V_0^+}{Z_0}(e^{-j\beta{}z}-\Gamma_L{}e^{j\beta{}z})}
 \label{eq:current_wave_gamma}
 \end{equation}
 $$
 
 # The Last Unknown
 
-In order to solve for $$V_0^+$$, we need to apply another boundary condition, this time at the source. Taking the _wave impedance_{: style="color: red;"}, or the impedance at a point $$z$$ on the line, as the ratio of Eqs. (
-ef{eq:voltage_wave_gamma}) and (
-ef{eq:current_wave_gamma}), we have
+In order to solve for $$V_0^+$$, we need to apply another boundary condition, this time at the source. Taking the _wave impedance_{: style="color: red;"}, or the impedance at a point $$z$$ on the line, as the ratio of Eqs. (\ref{eq:voltage_wave_gamma}) and (\ref{eq:current_wave_gamma}), we have
 
 $$
-egin{align*}
-Z(z)&=rac{	ilde{V}(z)}{	ilde{I}(z)}\
-&=Z_0rac{e^{-jeta{}z}(1+\Gamma_L{}e^{j2eta{}z})}{e^{-jeta{}z}(1-\Gamma_L{}e^{j2eta{}z})}\
-&=Z_0rac{1+\Gamma_z}{1-\Gamma_z}\
+\begin{align*}
+Z(z)&=\frac{\tilde{V}(z)}{\tilde{I}(z)}\\
+&=Z_0\frac{e^{-j\beta{}z}(1+\Gamma_L{}e^{j2\beta{}z})}{e^{-j\beta{}z}(1-\Gamma_L{}e^{j2\beta{}z})}\\
+&=Z_0\frac{1+\Gamma_z}{1-\Gamma_z}\\
 \end{align*}
 $$
 
-where $$\Gamma_z=\Gamma_Le^{j2eta{}z}$$, which is $$\Gamma_L$$ phase shifted by $$2eta{}z$$ toward the source. The _input impedance_{: style="color:red;"}, or the impedance of a line of length $$l$$ at $$z=-l$$, is therefore
+where $$\Gamma_z=\Gamma_Le^{j2\beta{}z}$$, which is $$\Gamma_L$$ phase shifted by $$2\beta{}z$$ toward the source. The _input impedance_{: style="color:red;"}, or the impedance of a line of length $$l$$ at $$z=-l$$, is therefore
 
-$$Z_{in}=Z(-l)=Z_0rac{1+\Gamma_L{}e^{-j2eta{}l}}{1-\Gamma_L{}e^{-j2eta{}l}}$$
+$$Z_{in}=Z(-l)=Z_0\frac{1+\Gamma_L{}e^{-j2\beta{}l}}{1-\Gamma_L{}e^{-j2\beta{}l}}$$
 
 The input impedance and the source impedance (as shown in Figure 2) therefore form a voltage divider, expressed by
 
 $$
-egin{equation}
-	ilde{V}(l)=rac{	ilde{V}_GZ_{in}}{Z_G+Z_{in}}
+\begin{equation}
+\tilde{V}(l)=\frac{\tilde{V}_GZ_{in}}{Z_G+Z_{in}}
 \label{eq:input_voltage}
 \end{equation}
 $$
 
-The voltage at $$z=-l$$ can also be expressed through Eq. (
-ef{eq:voltage_wave_gamma}), and when combined with Eq. (
-ef{eq:input_voltage}), give us an expression for $$V_0^+$$.
+The voltage at $$z=-l$$ can also be expressed through Eq. (\ref{eq:voltage_wave_gamma}), and when combined with Eq. (\ref{eq:input_voltage}), give us an expression for $$V_0^+$$.
 
 $$
-egin{equation}
-V_0^+=(rac{	ilde{V}_GZ_{in}}{Z_G+Z_{in}})(rac{1}{e^{jeta{}l}+\Gamma_Le^{-jeta{}l}})
+\begin{equation}
+V_0^+=(\frac{\tilde{V}_GZ_{in}}{Z_G+Z_{in}})(\frac{1}{e^{j\beta{}l}+\Gamma_Le^{-j\beta{}l}})
 \label{eq:incident_wave_amplitude}
 \end{equation}
 $$
 
-Substituting this equation into Eq. (
-ef{eq:voltage_wave_gamma}) yields the final solution to the voltage and current waves along a transmission line of length $$l$$, depending only on $$l$$ and the parameters of the line $$R'$$, $$G'$$, $$L'$$, and $$C'$$.
+Substituting this equation into Eq. (\ref{eq:voltage_wave_gamma}) yields the final solution to the voltage and current waves along a transmission line of length $$l$$, depending only on $$l$$ and the parameters of the line $$R'$$, $$G'$$, $$L'$$, and $$C'$$.
 
 $$
-egin{equation}
+\begin{equation}
+\color{blue}{\tilde{V}(z)=(\frac{\tilde{V}_GZ_{in}}{Z_G+Z_{in}})(\frac{1}{e^{j\beta{}l}+\Gamma_Le^{-j\beta{}l}})(e^{-j\beta{}z}+\Gamma_L{}e^{j\beta{}z})}
 \label{eq:voltage_final_solution}
 \end{equation}
 $$
 
 $$
-egin{equation}
+\begin{equation}
+\color{blue}{\tilde{I}(z)=\frac{1}{Z_0}(\frac{\tilde{V}_GZ_{in}}{Z_G+Z_{in}})(\frac{1}{e^{j\beta{}l}+\Gamma_Le^{-j\beta{}l}})(e^{-j\beta{}z}+\Gamma_L{}e^{j\beta{}z})}
 \label{eq:current_final_solution}
 \end{equation}
 `,
@@ -629,8 +624,7 @@ struct Token {
         bar = '|',
         gt = '>',
         lt = '<',
-        newline = '
-',
+        newline = '\n',
         word
     };
 
@@ -674,7 +668,7 @@ The main method used by the parser will be \`next_token()\`. Each successive cal
 #include "lex.hpp"
 
 bool isop(char c) { return c == '&' || c == '|' || c == '>' || c == '<'; }
-bool isspace(char c) { return c == ' ' || c == '	' || c == ''; }
+bool isspace(char c) { return c == ' ' || c == '\t' || c == '\v'; }
 
 Token Lexer::to_start(char c) {
     stringstream out;
@@ -686,8 +680,7 @@ Token Lexer::to_start(char c) {
 
     if (c == '#') {
         return to_comment(c);
-    } else if (c == '
-' || isop(c)) {
+    } else if (c == '\n' || isop(c)) {
         return Token(in.get());
     } else if (c == EOF) {
         return to_eof();
@@ -697,15 +690,13 @@ Token Lexer::to_start(char c) {
 }
 
 Token Lexer::to_comment(char c) {
-    while ((c = in.get()) != '
-') {
+    while ((c = in.get()) != '\n') {
     }
     return Token(c);
 }
 
 Token Lexer::to_word(char c, stringstream &out) {
-    while (c != '
-' && !isspace(c) && !isop(c)) {
+    while (c != '\n' && !isspace(c) && !isop(c)) {
         if (c == EOF) {
             break;
         } else if (c == '\'' || c == '"') {
@@ -728,8 +719,7 @@ Token Lexer::to_quote(char c, stringstream &out) {
                            string(1, delim));
         } else {
             out << c;
-            if (c == '
-' && in_repl) {
+            if (c == '\n' && in_repl) {
                 cout << "quote> ";
             }
         }
@@ -1299,13 +1289,10 @@ void repl() {
     while (true) {
         try {
             cout << prompt();
-
             directive = Parser(lexer).parse();
-
             if (directive) {
                 cout << directive << endl;
             }
-
             reap_jobs();
         } catch (LexError &err) {
             cerr << "Lex error: " << err.what() << endl;
@@ -1447,7 +1434,7 @@ char **Directive::argv() {
 }
 \`\`\`
 
-Now let's invoke \`fork()\` and \`execvp()\`. The \`fork()\` function returns the pid of the child process in the parent, 0 in the child, and -1 if an error has occurred. The \`execvp()\` function should not return anything (it's overwriting the current process, aftera all), and if it does we know there's been an error. Finally, as the parent process, we need to \`wait()\` on the child process, telling the operating system that the process can be safely removed from its list of running processes.
+Now let's invoke \`fork()\` and \`execvp()\`. The \`fork()\` function returns the pid of the child process in the parent, 0 in the child, and -1 if an error has occurred. The \`execvp()\` function should not return anything (it's overwriting the current process, aftera all), and if it does we know there's been an error. Finally, as the parent process, we need to \`wait()\` on the child process, telling the operating system that the process can be safely removed from its list of running processes. We can also take this chance to free up the \`Directive\`'s memory.
 
 \`\`\`c++
 // exec.cpp
@@ -1490,16 +1477,194 @@ void exec(Directive *directive) {
             }
         }
 
-        // Wait until the child process is finished, and have the os reap it.
+        // Wait until the child process is finished and have the os reap it.
         if (waitpid(directive->pid, NULL, 0) == -1) {
             ShellError("waitpid: an unknown error has occurred (errno = " +
                         to_string(errno) + ")");
         }
+        delete directive;
+    }
+}
+\`\`\`
+
+We can now exec our directives in in \`repl()\` and \`readfile()\` instead of just printing them.
+
+\`\`\`c++
+void repl() {
+    string input;
+    Directive *directive;
+    Lexer lexer(cin);
+
+    while (!lexer.eof()) {
+        try {
+            cout << prompt();
+            directive = Parser(lexer).parse();
+            exec(directive);
+        } catch (LexError &err) {
+            cerr << "Lex error: " << err.what() << endl;
+        } catch (ParseError &err) {
+            cerr << "Parse error: " << err.what() << endl;
+        } catch (ShellError &err) {
+            cerr << "Shell error: " << err.what() << endl;
+        }
+    }
+}
+
+void readfile(string filename) {
+    ifstream infile(filename);
+    if (!infile.is_open()) {
+        throw ShellError("unable to open file " + filename);
+    }
+
+    Directive *directive;
+    Lexer lexer(infile, false);
+    Parser parser(lexer);
+
+    try {
+        while (!parser.eof()) {
+            directive = parser.parse();
+            exec(directive);
+        }
+    } catch (LexError &err) {
+        cerr << "Lex error: " << err.what() << endl;
+    } catch (ParseError &err) {
+        cerr << "Parse error: " << err.what() << endl;
+    } catch (ShellError &err) {
+        cerr << "Shell error: " << err.what() << endl;
     }
 }
 \`\`\`
 
 # Background Processes
+
+Now that we have the basics set up, supporting background processes is as easy as not waiting on the child process to finish. Instead, we'll add it to a global jobs vector that we'll periodically check for finished processes. Let's declare the vector first.
+
+\`\`\`c++
+// exec.hpp
+extern std::vector<Directive *> jobs;
+\`\`\`
+
+If the process is a background process, we'll add it to the vector instead of waiting on it and notify the user by printing its pid to stdout.
+
+\`\`\`c++
+// exec.cpp
+    if (directive->background) {
+        jobs.push_back(directive);
+        cout << "[" << jobs.size() << "]"
+             << " " << directive->pid << endl;
+    } else {
+        if (waitpid(directive->pid, NULL, 0) == -1) {
+            ShellError("waitpid: an unknown error has occurred (errno = " +
+                        to_string(errno) + ")");
+        }
+        delete directive;
+    }
+\`\`\`
+
+Finally, we need to periodically check this vector for finished processes. For now, we'll do this in every loop in the case of repl and once after interpreting a file.
+
+\`\`\`c++
+// smash.cpp
+vector<Directive *> jobs;
+
+void repl() {
+    string input;
+    Directive *directive;
+    Lexer lexer(cin);
+
+    while (!lexer.eof()) {
+        try {
+            cout << prompt();
+            directive = Parser(lexer).parse();
+            exec(directive);
+            reap_jobs();
+        } catch (LexError &err) {
+            cerr << "Lex error: " << err.what() << endl;
+        } catch (ParseError &err) {
+            cerr << "Parse error: " << err.what() << endl;
+        } catch (ShellError &err) {
+            cerr << "Shell error: " << err.what() << endl;
+        }
+    }
+}
+
+void readfile(string filename) {
+    ifstream infile(filename);
+    if (!infile.is_open()) {
+        throw ShellError("unable to open file " + filename);
+    }
+
+    Directive *directive;
+    Lexer lexer(infile, false);
+    Parser parser(lexer);
+
+    try {
+        while (!parser.eof()) {
+            directive = parser.parse();
+            exec(directive);
+            reap_jobs();
+        }
+    } catch (LexError &err) {
+        cerr << "Lex error: " << err.what() << endl;
+    } catch (ParseError &err) {
+        cerr << "Parse error: " << err.what() << endl;
+    } catch (ShellError &err) {
+        cerr << "Shell error: " << err.what() << endl;
+    }
+}
+\`\`\`
+
+As seen already, \`waitpid()\` blocks while waiting on a process. To avoid this behavior, we can pass it the \`WNOHANG\` option. This way, \`waitpid()\` returns 0 immediately if the processes isn't finished, leaving our background processes free to finish in their own time and a user to continue executing commands.
+
+\`\`\`c++
+// smash.cpp
+void reap_jobs() {
+    int status;
+    Directive *directive;
+
+    for (unsigned int i = 0; i < jobs.size(); ++i) {
+        directive = jobs[i];
+
+        if ((status = waitpid(directive->pid, nullptr, WNOHANG))) {
+            if (status == -1) {
+                throw ShellError(
+                    "waitpid: an unknown error has occurred (errno = " +
+                    to_string(errno) + ")");
+            }
+
+            cout << "[" << i + 1 << "] " << directive->pid << " done\t"
+                  << directive->full_name() << endl;
+            delete directive;
+            jobs.erase(jobs.begin() + i);
+        }
+    }
+}
+\`\`\`
+
+Now we really do have a basic shell on our hands.
+
+\`\`\`
+❯ ./smash
+ajbond /Users/ajbond/Documents/smash> echo hello
+hello
+ajbond /Users/ajbond/Documents/smash> ls
+Makefile        exec.hpp        hello           lex.hpp         parse.cpp       parse.o         smash.cpp       test.sh
+exec.cpp        exec.o          lex.cpp         lex.o           parse.hpp       smash           smash.dSYM
+ajbond /Users/ajbond/Documents/smash> rm test.sh
+ajbond /Users/ajbond/Documents/smash> sleep 5 &
+[1] 12103
+ajbond /Users/ajbond/Documents/❯ ./smash
+ajbond /Users/ajbond/Documents/smash> echo hello
+hello
+ajbond /Users/ajbond/Documents/smash> ls
+Makefile        exec.hpp        hello           lex.hpp         parse.cpp       parse.o         smash.cpp       test.sh
+exec.cpp        exec.o          lex.cpp         lex.o           parse.hpp       smash           smash.dSYM
+ajbond /Users/ajbond/Documents/smash> rm test.sh
+ajbond /Users/ajbond/Documents/smash> sleep 5 &
+[1] 12103
+ajbond /Users/ajbond/Documents/smash>
+[1] 12103 done  sleep 5
+ajbond /Users/ajbond/Documents/smash>
 `,
                     },
                 ],
@@ -1514,11 +1679,11 @@ permalink: /about/
 
 <img src="/headshot2.png" alt="That's me." class="img-round img-large"/>
 
-I’m seeking an entry-level electrical engineering or software engineering position. I’ve excelled in classes including Computer Architecture, Digital Design, Circuits, Statistics, Data Structures & Algorithms, Electromagnetics, and Systems Programming. I also have strong communication skills and an excellent academic record.
+I’m an electrical engineering student seeking to begin a career where hardware meets software. I’ve excelled in classes including Computer Architecture, Digital Design, Circuits, Statistics, Data Structures & Algorithms, Electromagnetics, and Systems Programming. I also have strong communication skills and an excellent academic record.
 
-Outside of school, I like to program in C, C++, Rust, and Go, and I'm working to deliver safe and reliable power to the AggieSat6 satellite, which will hopefully be launched in 2022. My portfolio contains details on these and other projects.
+Outside of school, I like to program in C, C++, Rust, and Go, and I'm working to deliver safe and reliable power to the AggieSat 6 nanosatellite, which will hopefully be launched in 2022. My portfolio contains details on these and other projects.
 
-I have the talent, perspective, and people skills to make your organization better. Feel free to drop me a line, and thanks for reading.
+I'm ready to apply my energy and intellect to challenging problems, learn as much as possible, and love every bit. Download my resume or get in touch with the links below.
 `,
             },
             {
@@ -1545,8 +1710,8 @@ layout: jsh
     </canvas>
 </div>
 
-<script src="src/fs.js" type="text/javascript"></script>
-<script src="src/jsh.js" type="text/javascript"></script>
+<script src="src/filesystem.js" type="text/javascript"></script>
+<script src="src/shell.js" type="text/javascript"></script>
 <script src="src/snake.js" type="text/javascript"></script>
 </body>
 </html>
@@ -1589,8 +1754,8 @@ We're participating in the University NanoSatellite Program and aiming to launch
 </div>
 
 <div class="item" markdown="1">
-[Fig](https://github.com/olishmollie/fig):
-The token Scheme implementation. I'm proud of this one because it's in C99 and I implemented a tracing garbage collector for it. I love the name, too. I wrote a Go port of it called GoFig. Yessssssss.
+<a href="/programming_assignment.pdf" download>Probability Project</a>
+As an extra-credit project in Random Signals and Systems, I developed a simulation in Python of a random experiment involving multiple Poisson and exponential random variables. After using the simulation to predict the mean and variance of the scenario, I proved it using the laws of probability. Use the link above to download the report.
 </div>
 
 <div class="item" markdown="1">
@@ -1606,6 +1771,11 @@ I found a great <a href="https://justinmeiners.github.io/lc3-vm/">tutorial</a> o
 <div class="item" markdown="1">
 [Orng](https://github.com/olishmollie/orng)
 I was looking for a project to do in C++, and when I saw Rob Pike's <a href="https://github.com/robpike/ivy">Ivy</a>, I knew I had found one. It was also a great introduction to APL.
+</div>
+
+<div class="item" markdown="1">
+[Fig](https://github.com/olishmollie/fig):
+The token Scheme implementation. I'm proud of this one because it's in C99 and I implemented a tracing garbage collector for it. I love the name, too. I wrote a Go port of it called GoFig. Yessssssss.
 </div>
 `,
             },
@@ -1672,9 +1842,852 @@ permalink: /resume/
     </canvas>
 </div>
 
-<script src="src/fs.js" type="text/javascript"></script>
-<script src="src/jsh.js" type="text/javascript"></script>
+<script src="src/filesystem.js" type="text/javascript"></script>
+<script src="src/shell.js" type="text/javascript"></script>
 `,
+            },
+            {
+                name: "src",
+                parent: "~",
+                files: [
+                    {
+                        name: "generate_filesystem.sh",
+                        data: `#! /usr/bin/env sh
+
+## Outputs the contents of certain files into a JSON 'filesystem' so users
+## can read source files in the JavaScript 'shell'.
+
+mkdir notes
+cp _notes/*.md notes/
+
+outfile='src/filesystem.js'
+
+gen() {
+	for file in $1; do
+		if [ -d "$file" ]; then
+			{
+				echo "{ name: \"$file\","
+				echo "parent: \"$(dirname "$file")\"," | sed 's/\./~/'
+				echo "files: ["
+				gen "$file/*"
+				echo "]},";
+			}
+		else
+			if [ "$file" != "$outfile" ]; then
+				echo "{ name: \"$(basename "$file")\","
+				printf 'data: \`'
+				while IFS= read -r line; do
+					echo "$line" | sed 's/\`/\\\`/g'
+				done < "$file"
+				echo '\`},'
+			fi
+		fi
+	done
+}
+
+{
+	echo 'var fs = ['
+	echo '{ name: "~", files: ['
+	gen "notes"
+	gen "*.md"
+	gen "src"
+	printf ']}];'
+} > $outfile
+
+if command -v prettier > /dev/null; then
+	prettier -w $outfile
+fi
+
+rm -rf notes
+`,
+                    },
+                    {
+                        name: "main.css",
+                        data: `* {
+    box-sizing: border-box;
+}
+
+#jshContainer {
+    width: 100vw;
+    height: 100vh;
+    background: #000000;
+    color: lightgreen;
+    border: 5px solid gray;
+    display: flex;
+}
+
+#jshTextArea {
+    width: 100%;
+    height: 100%;
+    outline: none;
+    resize: none;
+    margin: 0;
+    background: inherit;
+    color: inherit;
+    font-size: 20px;
+    font-family: "Source Code Pro", monospace;
+    border: none;
+}
+
+#snakeCanvas {
+    display: none;
+    background: inherit;
+    color: inherit;
+    border: 1px solid gray;
+    margin: auto;
+    justify-content: center;
+    align-items: center;
+}
+
+.item {
+}
+
+.item img {
+}
+
+.img-round {
+    border-radius: 50%;
+    margin-right: 50px;
+}
+
+.img-large {
+    width: 150px;
+}
+
+.img-medium {
+    width: 125px;
+}
+
+.img-small {
+    width: 100px;
+}
+
+.img-xsmall {
+    width: 75px;
+}
+`,
+                    },
+                    {
+                        name: "shell.js",
+                        data: `var jshContainer = document.querySelector("#jshContainer");
+var jshTextArea = document.querySelector("#jshTextArea");
+var snakeCanvas = document.querySelector("#snakeCanvas");
+var pwd = "~";
+var inputBuffer = "";
+var cursorPos = beginningOfLine();
+
+// Disable focusing away from textarea
+document.addEventListener("click", function (e) {
+    jshTextArea.focus();
+});
+
+// Always restore cursor position even if you click
+jshTextArea.addEventListener("click", function (e) {
+    e.preventDefault();
+    e.stopPropagation();
+    this.selectionStart = this.selectionEnd = cursorPos;
+});
+
+// Insert text into buffer
+jshTextArea.addEventListener("input", function (e) {
+    inputBuffer = this.value.substr(beginningOfLine());
+});
+
+function handleKeydown(e) {
+    // Handle newline
+    if (e.keyCode === 13) {
+        e.preventDefault();
+        cursorPos = beginningOfLine();
+        exec(inputBuffer);
+    }
+    // Handle C-c
+    else if (e.ctrlKey && e.keyCode === 67) {
+        e.preventDefault();
+        this.value += "\n$ ";
+        cursorPos = beginningOfLine();
+    }
+    // Handle C-l (clear screen)
+    else if (e.ctrlKey && e.keyCode === 76) {
+        clear();
+    }
+    // Handle delete and backspace
+    else if (e.keyCode === 8 || e.keyCode === 46) {
+        if (atBeginningOfLine()) {
+            e.preventDefault();
+        } else {
+            --cursorPos;
+        }
+    }
+    // Disable tab (for now, will do completion eventually)
+    else if (e.keyCode === 9) {
+        e.preventDefault();
+    }
+    // Disable C-p and C-n (line movement)
+    else if (e.ctrlKey && (e.keyCode === 78 || e.keyCode === 80)) {
+        e.preventDefault();
+    }
+    // C-a: Move to beginning of input
+    else if (e.ctrlKey && e.keyCode === 65) {
+        e.preventDefault();
+        cursorPos = this.selectionStart = this.selectionEnd = beginningOfLine();
+    }
+    // C-b: Move backward
+    else if (e.ctrlKey && e.keyCode === 66) {
+        if (atBeginningOfLine()) {
+            e.preventDefault();
+        } else {
+            --cursorPos;
+        }
+    }
+    // Handle arrow keys
+    else if (e.keyCode >= 37 && e.keyCode <= 40) {
+        switch (e.keyCode) {
+            case 37:
+                if (atBeginningOfLine()) {
+                    e.preventDefault();
+                }
+                break;
+            case 38:
+            case 40:
+                e.preventDefault();
+        }
+    }
+    // All other keys
+    else {
+        cursorPos = this.selectionStart + 1;
+    }
+}
+
+function prompt() {
+    return pwd + " $ ";
+}
+
+function currentLine() {
+    return (jshTextArea.value.match(/\n/g) || []).length;
+}
+
+function beginningOfLine() {
+    let pos;
+    if ((pos = jshTextArea.value.lastIndexOf("\n")) === -1) {
+        return prompt().length;
+    }
+    return pos + prompt().length + 1;
+}
+
+function atBeginningOfLine() {
+    return (
+        jshTextArea.selectionStart <= 2 ||
+        jshTextArea.selectionStart <= beginningOfLine()
+    );
+}
+
+function output(str) {
+    if (str.length > 0) {
+        jshTextArea.value += "\n" + str + "\n" + prompt();
+        inputBuffer = "";
+    } else {
+        jshTextArea.value += "\n" + prompt();
+    }
+    jshTextArea.scrollTop = jshTextArea.scrollHeight;
+    cursorPos = jshTextArea.selectionStart;
+}
+
+var validCommands = [
+    "cat",
+    "cd",
+    "clear",
+    "exit",
+    "help",
+    "ls",
+    "open",
+    "snake",
+];
+
+function exec(input) {
+    if (input.length === 0) {
+        output("");
+    } else {
+        let tokens = input.split(/\s/).filter(function (str) {
+            return !!str;
+        });
+
+        let command = tokens[0];
+
+        if (validCommands.includes(command)) {
+            if (command === "cat") {
+                cat(tokens.slice(1));
+            } else if (command === "clear") {
+                clear();
+            } else if (command === "cd") {
+                cd(tokens.slice(1));
+            } else if (command === "exit") {
+                window.location.href = "/about";
+            } else if (command === "help") {
+                help();
+            } else if (command === "ls") {
+                ls(tokens.slice(1));
+            } else if (command === "open") {
+                open(tokens.slice(1));
+            } else if (command === "snake") {
+                showSnake();
+                game.play();
+            }
+        } else {
+            output("command not found: " + command);
+        }
+    }
+}
+
+function findFile(filename, dir = fs) {
+    if (!dir || !filename) {
+        return false;
+    }
+
+    let path = filename.split("/");
+    let obj;
+
+    for (let i = 0; i < dir.length; ++i) {
+        if (dir[i].name === filename) {
+            return dir[i];
+        }
+
+        if ((obj = findFile(path.slice(1).join("/"), dir[i].files))) {
+            return obj;
+        }
+    }
+
+    return false;
+}
+
+function cat(args) {
+    if (args.length === 0) {
+        output("");
+    } else {
+        let entity = findFile(pwd + "/" + args[0]);
+        if (entity.data) {
+            output(entity.data);
+        } else {
+            output("cat: " + args[0] + " is a directory");
+        }
+    }
+}
+
+function cd(args) {
+    if (args.length === 0) {
+        pwd = "~";
+        output("");
+    } else if (args[0] === "..") {
+        let parent = findFile(pwd).parent;
+        pwd = parent;
+        output("");
+    } else {
+        let path = findFile(pwd + "/" + args[0]);
+        if (path && path.parent) {
+            pwd += "/" + path.name;
+            output("");
+        } else if (!path.parent) {
+            output("cd: " + args[0] + " is not a directory ");
+        } else {
+            output("cd: no such file or directory " + args[0]);
+        }
+    }
+}
+
+function clear() {
+    jshTextArea.value = prompt();
+    cursorPos = prompt().length;
+    inputBuffer = "";
+}
+
+function help() {
+    let commandStr = "[" + validCommands.join(", ") + "]";
+    var helpStr = \`Commands: [\${validCommands.join(", ")}]\n\n\`;
+
+    helpStr += \`cat - Output a file to the terminal.
+cd - Change directories.
+clear - Clear the terminal screen.
+exit - View the rest of the site.
+help - Print this message.
+ls - List files in a directory.
+open - Jump to a page in the site.
+snake - Arrow keys to move, 'q' to quit.
+\`;
+    output(helpStr);
+}
+
+function ls(args) {
+    let str = "";
+    let files, entity;
+
+    if (args.length > 0) {
+        entity = findFile(pwd + "/" + args[0], fs);
+    } else {
+        entity = findFile(pwd, fs);
+    }
+
+    if (!entity) {
+        output("ls: no such file or directory " + args[0]);
+        return;
+    }
+
+    if (entity.data) {
+        // It's a file.
+        files = [args[0]];
+    } else {
+        files = entity.files;
+    }
+
+    for (let i = 0; i < files.length; ++i) {
+        str += files[i].name || files[i];
+        if (i != files.length - 1) {
+            str += " ";
+        }
+    }
+
+    output(str);
+}
+
+function open(args) {
+    if (args.length === 0) {
+        output("open: must be provided an argument");
+    } else {
+        let entity = findFile(pwd + "/" + args[0]);
+
+        if (entity && entity.data && entity.name.includes(".md")) {
+            clear();
+            let url;
+            if (pwd != "~") {
+                url = pwd.replace("~", "") + "/" + args[0].replace(".md", "");
+            } else {
+                url = args[0].replace(".md", "");
+            }
+            window.location.href = url;
+        } else if (entity && entity.data) {
+            output(
+                "open: can only open files with '.md' extension. try \`cat\` to view source code."
+            );
+        } else if (entity && !entity.data) {
+            output("open: " + args[0] + " is a directory");
+        } else {
+            output("open: no such file or directory " + args[0]);
+        }
+    }
+}
+
+function showSnake() {
+    clear();
+    snakeCanvas.style.display = "block";
+    jshTextArea.style.display = "none";
+}
+
+function hideSnake() {
+    snakeCanvas.style.display = "none";
+    jshTextArea.style.display = "block";
+}
+
+var welcomeStr =
+    "(Press any key to continue.) Welcome! I'm AJ Bond, an electrical engineering student seeking to begin a career where hardware meets software. I’ve excelled in classes including Computer Architecture, Digital Design, Circuits, Statistics, Data Structures & Algorithms, Electromagnetics, and Systems Programming. I also have strong communication skills and an excellent academic record.\n\nI'm ready to apply my energy and intellect to challenging problems, learn as much as possible, and love every bit. Type \`help\` for available commands, or type \`exit\` to view the rest of the site.\n\nHint: Use \`cat\` to view the some of the source code for the site.";
+
+var introInterval;
+
+function init() {
+    jshTextArea.removeEventListener("keydown", disableKeyboard);
+    jshTextArea.addEventListener("keydown", handleKeydown);
+}
+
+function disableKeyboard(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    clear();
+    clearInterval(introInterval);
+    output(welcomeStr);
+    init();
+}
+
+snakeCanvas.width = "800";
+snakeCanvas.height = "500";
+
+window.onload = function () {
+    game = new Game(snakeCanvas);
+
+    jshTextArea.focus();
+    jshTextArea.spellcheck = false;
+    jshTextArea.textContent = prompt();
+    jshTextArea.selectionStart = prompt().length;
+
+    jshTextArea.addEventListener("keydown", disableKeyboard);
+
+    let i = 0;
+    introInterval = setInterval(function () {
+        if (welcomeStr[i]) {
+            jshTextArea.value += welcomeStr[i++];
+            cursorPos += 1;
+        } else {
+            clearInterval(introInterval);
+            init();
+            output("");
+        }
+    }, 50);
+};
+`,
+                    },
+                    {
+                        name: "snake.js",
+                        data: `Number.prototype.times = function (f) {
+    for (var i = 0; i < this; i++) {
+        f();
+    }
+    return this;
+};
+
+Number.prototype.between = function (a, b) {
+    var min = Math.min(a, b);
+    var max = Math.max(a, b);
+
+    return this > min && this < max;
+};
+
+class Segment {
+    constructor(x, y, ctx, color = "lightgreen") {
+        this.x = x;
+        this.y = y;
+        this.ctx = ctx;
+        this.height = 10;
+        this.width = 10;
+        this.currAxis;
+        this.color = color;
+    }
+
+    chase() {
+        this.moveTo(this.targetX, this.targetY);
+    }
+
+    moveTo(newX, newY) {
+        this.clear();
+        this.draw(newX, newY);
+        this.x = newX;
+        this.y = newY;
+    }
+
+    draw(x, y) {
+        this.ctx.fillStyle = this.color;
+        this.ctx.fillRect(x, y, this.height, this.width);
+    }
+
+    clear() {
+        this.ctx.clearRect(this.x, this.y, this.height, this.width);
+    }
+}
+
+class Head extends Segment {
+    constructor(x, y, ctx) {
+        super(x, y, ctx);
+        this.direction;
+        this.draw(x, y);
+    }
+
+    draw(x, y) {
+        super.draw(x, y);
+        var head = this;
+        function drawLeftEye() {
+            head.ctx.clearRect(x + 2, y + 2, 2, 2);
+        }
+        function drawRightEye() {
+            head.ctx.clearRect(x + 6, y + 2, 2, 2);
+        }
+        function drawBottomEyes() {
+            head.ctx.clearRect(x + 2, y + 6, 2, 2);
+            head.ctx.clearRect(x + 6, y + 6, 2, 2);
+        }
+        switch (this.currAxis) {
+            case "+x":
+                drawRightEye();
+                break;
+            case "-x":
+                drawLeftEye();
+                break;
+            case "+y":
+                drawBottomEyes();
+                break;
+            default:
+                drawRightEye();
+                drawLeftEye();
+        }
+    }
+
+    move() {
+        switch (this.direction) {
+            case "up":
+                this.moveTo(
+                    this.x % snakeCanvas.width,
+                    this.y - this.height < 0
+                        ? snakeCanvas.height
+                        : this.y - this.height
+                );
+                this.currAxis = "-y";
+                break;
+            case "down":
+                this.moveTo(
+                    this.x % snakeCanvas.width,
+                    (this.y + this.height) % snakeCanvas.height
+                );
+                this.currAxis = "+y";
+                break;
+            case "left":
+                this.moveTo(
+                    this.x - this.width < 0
+                        ? snakeCanvas.width
+                        : this.x - this.width,
+                    this.y % snakeCanvas.height
+                );
+                this.currAxis = "-x";
+                break;
+            case "right":
+                this.moveTo(
+                    (this.x + this.width) % snakeCanvas.width,
+                    this.y % snakeCanvas.height
+                );
+                this.currAxis = "+x";
+                break;
+        }
+    }
+}
+
+class Treat extends Segment {
+    constructor(ctx, color = "rgb(255, 0, 0") {
+        super(null, null, ctx, color);
+        this.x = this.randomPos(ctx.canvas.width);
+        this.y = this.randomPos(ctx.canvas.height);
+    }
+
+    draw() {
+        this.ctx.fillStyle = this.color;
+        super.draw(this.x, this.y);
+        this.ctx.fillStyle = "rgb(0, 0, 0)";
+    }
+
+    randomPos(max) {
+        var num = Math.floor(Math.random() * max);
+        return parseInt(num / 10, 10) * 10;
+    }
+}
+
+class Serpent {
+    constructor(x, y, ctx, direction = "right") {
+        this.head = new Head(x, y, ctx, direction);
+        this.segments = [this.head];
+        this.ctx = ctx;
+    }
+
+    move() {
+        for (var i = 1; i < this.segments.length; i++) {
+            this.segments[i].targetX = this.segments[i - 1].x;
+            this.segments[i].targetY = this.segments[i - 1].y;
+
+            if (
+                this.segments[i].x == this.segments[i].targetX &&
+                this.segments[i].targetY > this.segments[i].y
+            ) {
+                this.segments[i].currAxis = "+y";
+            }
+
+            if (
+                this.segments[i].y == this.segments[i].targetY &&
+                this.segments[i].targetX > this.segments[i].x
+            ) {
+                this.segments[i].currAxis = "+x";
+            }
+
+            if (
+                this.segments[i].x == this.segments[i].targetX &&
+                this.segments[i].targetY < this.segments[i].y
+            ) {
+                this.segments[i].currAxis = "-y";
+            }
+
+            if (
+                this.segments[i].y == this.segments[i].targetY &&
+                this.segments[i].targetX < this.segments[i].x
+            ) {
+                this.segments[i].currAxis = "-x";
+            }
+        }
+
+        this.head.move();
+
+        for (i = 1; i < this.segments.length; i++) {
+            this.segments[i].chase();
+        }
+    }
+
+    get length() {
+        return this.segments.length;
+    }
+
+    get tail() {
+        return this.segments[this.segments.length - 1];
+    }
+
+    get touchingSelf() {
+        for (var i = 1; i < this.segments.length; i++) {
+            var seg = this.segments[i];
+            if (this.head.x == seg.x && this.head.y == seg.y) return true;
+        }
+        return false;
+    }
+
+    addSegment() {
+        var seg = new Segment(null, null, this.ctx);
+        switch (this.tail.currAxis) {
+            case "+y":
+                seg.x = this.tail.x;
+                seg.y = this.tail.y - seg.height;
+                break;
+            case "+x":
+                seg.x = this.tail.x - seg.width;
+                seg.y = this.tail.y;
+                break;
+            case "-y":
+                seg.x = this.tail.x;
+                seg.y = this.tail.y + seg.height;
+                break;
+            case "-x":
+                seg.x = this.tail.x + seg.width;
+                seg.y = this.tail.y;
+        }
+        this.segments.push(seg);
+        seg.draw(seg.x, seg.y);
+    }
+}
+
+const INITIAL_FPS = 15;
+
+class Game {
+    constructor(canvas) {
+        this.canvas = canvas;
+        this.ctx = canvas.getContext("2d");
+        this.serpent = new Serpent(
+            canvas.width / 2,
+            canvas.height / 2,
+            this.ctx
+        );
+        this.fps = INITIAL_FPS;
+        this.treat = new Treat(this.ctx);
+        this._over = false;
+    }
+
+    get score() {
+        return this.serpent.length - 1;
+    }
+
+    get over() {
+        return this._over || this.serpent.touchingSelf; // || this.outOfBounds
+    }
+
+    set over(newOver) {
+        this._over = newOver;
+    }
+
+    get outOfBounds() {
+        return (
+            this.serpent.head.x > this.canvas.width - this.serpent.head.width ||
+            this.serpent.head.x < 0 ||
+            this.serpent.head.y >
+                this.canvas.height - this.serpent.head.height ||
+            this.serpent.head.y < 0
+        );
+    }
+
+    get direction() {
+        return this.serpent.head.direction;
+    }
+
+    set direction(newDirection) {
+        this.serpent.head.direction = newDirection;
+    }
+
+    reset() {
+        this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+        this.serpent = new Serpent(
+            this.canvas.width / 2,
+            this.canvas.height / 2,
+            this.ctx
+        );
+        this.fps = INITIAL_FPS;
+        document.removeEventListener("keydown", this.handleKeyPress);
+    }
+
+    play() {
+        document.addEventListener("keydown", this.handleKeyPress);
+        this.over = false;
+        var game = this;
+        this.loop = setTimeout(function () {
+            game.serpent.move();
+            game.checkTreat();
+            game.offerTreat();
+            if (game.over) {
+                hideSnake();
+                output("Game over. Score: " + game.score);
+                game.reset();
+                return;
+            } else {
+                game.play();
+            }
+        }, 1000 / this.fps);
+
+        this.offerTreat();
+    }
+
+    offerTreat() {
+        this.treat.draw();
+    }
+
+    checkTreat() {
+        if (
+            this.serpent.head.x == this.treat.x &&
+            this.serpent.head.y == this.treat.y
+        ) {
+            this.serpent.addSegment();
+            this.treat = new Treat(this.ctx);
+            this.fps += 0.7;
+        }
+    }
+
+    quit() {
+        game.over = true;
+    }
+
+    handleKeyPress(e) {
+        switch (e.keyCode) {
+            case 38:
+                if (game.direction != "down") {
+                    game.direction = "up";
+                }
+                break;
+            case 40:
+                if (game.direction != "up") {
+                    game.direction = "down";
+                }
+                break;
+            case 37:
+                if (game.direction != "right") {
+                    game.direction = "left";
+                }
+                break;
+            case 39:
+                if (game.direction != "left") {
+                    game.direction = "right";
+                }
+                break;
+            case 81:
+                e.preventDefault();
+                game.quit();
+        }
+    }
+}
+`,
+                    },
+                ],
             },
         ],
     },

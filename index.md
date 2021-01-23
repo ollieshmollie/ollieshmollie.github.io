@@ -20,8 +20,8 @@ layout: jsh
     </canvas>
 </div>
 
-<script src="src/fs.js" type="text/javascript"></script>
-<script src="src/jsh.js" type="text/javascript"></script>
+<script src="src/filesystem.js" type="text/javascript"></script>
+<script src="src/shell.js" type="text/javascript"></script>
 <script src="src/snake.js" type="text/javascript"></script>
 </body>
 </html>

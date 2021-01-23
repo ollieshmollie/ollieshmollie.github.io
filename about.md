@@ -6,8 +6,6 @@ permalink: /about/
 
 <img src="/headshot2.png" alt="That's me." class="img-round img-large"/>
 
-I’m an electrical engineering student seeking to begin a career where hardware meets software. I’ve excelled in classes including Computer Architecture, Digital Design, Circuits, Statistics, Data Structures & Algorithms, Electromagnetics, and Systems Programming. I also have strong communication skills and an excellent academic record.
+Welcome! I’m Andrew Bond, an electrical engineering student seeking to bring my passion and curiosity to a career in technology. I’ve excelled in classes including Computer Architecture, Digital Design, Circuits, Statistics, Data Structures & Algorithms, Electromagnetics, and Systems Programming. I also have strong communication skills and an excellent academic record.
 
-Outside of school, I like to program in C, C++, Rust, and Go, and I'm working to deliver safe and reliable power to the AggieSat 6 nanosatellite, which will hopefully be launched in 2022. My portfolio contains details on these and other projects.
-
-I have the talent, perspective, and people skills to make your organization better. Feel free to drop me a line, and thanks for reading.
+I have a wide range of interests. I've won statewide gymnastics competitions, played drums in punk and indie bands, toured Europe, busked on the streets of New York, and matched wits with KUT's John Aeilli. I can't wait to apply my unique perspective, energy and intellect to challenging problems, learn as much as possible, and love every bit. Download my resume or get in touch with the links below.

@@ -315,7 +315,7 @@ function hideSnake() {
 }
 
 var welcomeStr =
-    "Welcome! I'm AJ Bond, an electrical engineering student seeking to begin a career where hardware meets software. I’ve excelled in classes including Computer Architecture, Digital Design, Circuits, Statistics, Data Structures & Algorithms, Electromagnetics, and Systems Programming. I also have strong communication skills and an excellent academic record.\n\nType `help` for available commands, or type `exit` to view the rest of the site.\n";
+    "Welcome! I’m Andrew Bond, an electrical engineering student seeking to bring my passion and curiosity to a career in technology. I’ve excelled in classes including Computer Architecture, Digital Design, Circuits, Statistics, Data Structures & Algorithms, Electromagnetics, and Systems Programming. I also have strong communication skills and an excellent academic record.";
 
 var introInterval;
 
