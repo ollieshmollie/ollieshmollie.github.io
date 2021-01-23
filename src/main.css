@@ -35,9 +35,11 @@
 }
 
 .item {
+    margin-bottom: 25px;
 }
 
 .item img {
+    float: right;
 }
 
 .img-round {

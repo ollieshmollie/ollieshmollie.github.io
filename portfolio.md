@@ -7,11 +7,10 @@ permalink: /portfolio/
 <div class="item" markdown="1">
 [AggieSat 6](https://aggiesat.tamu.edu):
 We're participating in the University NanoSatellite Program and aiming to launch our RF payload into space sometime in 2022. I'm on the EPS (Electrical Power System) team, designing circuits that will help power our satellite throughout its mission.
-<img src="/inhibit_pcb.png" alt="A PCB schematic I made for the AG6 inhibit scheme." title="A PCB schematic I made for the AG6 inhibit scheme." class="img-large"/>
 </div>
 
 <div class="item" markdown="1">
-<a href="/programming_assignment.pdf" download>Probability Project</a>
+<a href="/programming_assignment.pdf" download>Probability Simulation</a>
 As an extra-credit project in Random Signals and Systems, I developed a simulation in Python of a random experiment involving multiple Poisson and exponential random variables. After using the simulation to predict the mean and variance of the scenario, I proved it using the laws of probability. Use the link above to download the report.
 </div>
 
