@@ -315,7 +315,7 @@ function hideSnake() {
 }
 
 var welcomeStr =
-    "(Press any key to continue.) Welcome! I’m Andrew Bond, an electrical engineering student seeking to bring my passion and curiosity to a career in technology. I’ve excelled in classes including Computer Architecture, Digital Design, Circuits, Statistics, Data Structures & Algorithms, Electromagnetics, and Systems Programming. I also have strong communication skills and an excellent academic record.\n\nType 'help' to see available commands, or 'exit' to visit the rest of the site. (Hint: use 'cat' to view some of this site's source code, or type 'snake' to waste some time.)";
+    "Welcome! I’m Andrew Bond, an electrical engineering student seeking to leverage my skills in analog and digital circuits, programming, and problem solving to learn what it really means to be an electrical engineer. I'm an outstanding student with a 4.0 GPA, have strong written and interpersonal communication skills, and thrive in a team setting.\n\nType 'help' to see available commands, 'exit' to visit the rest of the site, 'cat' to view some of this site's source code, or 'snake' to waste some time.";
 
 var introInterval;
 
