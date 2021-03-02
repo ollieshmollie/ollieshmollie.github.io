@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Writing Samples
+title: Notes
 permalink: /notes/
 ---
 <div class="home">
